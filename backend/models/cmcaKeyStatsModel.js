@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const CMCAKeyStatsSchema = new Schema(
+const CmcaKeyStatsSchema = new Schema(
   {
     year: {
       type: String,
@@ -21,6 +21,6 @@ const CMCAKeyStatsSchema = new Schema(
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 )
 
-const CMCAKeyStats = mongoose.model('cmcakeystats', CMCAKeyStatsSchema)
+const CmcaKeyStats = mongoose.model('cmcakeystats', CmcaKeyStatsSchema)
 
-export default CMCAKeyStats
+export default CmcaKeyStats

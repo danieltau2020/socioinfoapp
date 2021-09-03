@@ -1,32 +1,32 @@
 import asynchandler from 'express-async-handler'
-import MineVillagesBankAccount2017 from '../models/mvBankAccountModel2017.js'
-import MineVillagesBankAccount2021 from '../models/mvBankAccountModel2021.js'
+import MvBankAccount2017 from '../models/mvBankAccountModel2017.js'
+import MvBankAccount2021 from '../models/mvBankAccountModel2021.js'
 
 // @desc    Fetch all bank accounts for mine vilalges
-// @route   GET /api/bankaccount/minevillages
+// @route   GET /api/bankaccount/mv
 // @access  Private
-const getMVBankAccounts = asynchandler(async (req, res) => {
+const getMvBankAccounts = asynchandler(async (req, res) => {
   const villageCode = req.query.villageCode
-  const dataSet = req.query.dataSet
+  const year = req.query.year
 
-  if (dataSet === '2017') {
+  if (year === '2017') {
     if (villageCode) {
-      const bankAccounts = await MineVillagesBankAccount2017.find({
+      const bankAccounts = await MvBankAccount2017.find({
         villageCode
       })
       res.status(200).json(bankAccounts)
     } else {
-      const bankAccounts = await MineVillagesBankAccount2017.find({})
+      const bankAccounts = await MvBankAccount2017.find({})
       res.status(200).json(bankAccounts)
     }
-  } else if (dataSet === '2021') {
+  } else if (year === '2021') {
     if (villageCode) {
-      const bankAccounts = await MineVillagesBankAccount2021.find({
+      const bankAccounts = await MvBankAccount2021.find({
         villageCode
       })
       res.status(200).json(bankAccounts)
     } else {
-      const bankAccounts = await MineVillagesBankAccount2021.find({})
+      const bankAccounts = await MvBankAccount2021.find({})
       res.status(200).json(bankAccounts)
     }
   } else {
@@ -35,4 +35,4 @@ const getMVBankAccounts = asynchandler(async (req, res) => {
   }
 })
 
-export { getMVBankAccounts }
+export { getMvBankAccounts }

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const MineVillagesBankAccountSchema = new Schema(
+const BankAccountSchema = new Schema(
   {
     year: {
       type: String,
@@ -49,9 +49,9 @@ const MineVillagesBankAccountSchema = new Schema(
   { timestamps: true }
 )
 
-const MineVillagesBankAccount2021 = mongoose.model(
+const MvBankAccount2021 = mongoose.model(
   'mvbankaccounts2021',
-  MineVillagesBankAccountSchema
+  BankAccountSchema
 )
 
-export default MineVillagesBankAccount2021
+export default MvBankAccount2021

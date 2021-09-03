@@ -12,7 +12,8 @@ import mvPersonRoutes from './routes/mvPersonRoutes.js'
 import mvBankAccountRoutes from './routes/mvBankAccountRoutes.js'
 import villageRoutes from './routes/villageRoutes.js'
 import regionRoutes from './routes/regionRoutes.js'
-import cmcaStatsRoutes from './routes/cmcaStatsRoutes.js'
+import cmcaKeyStatsRoutes from './routes/cmcaKeyStatsRoutes.js'
+import mvKeyStatsRoutes from './routes/mvKeyStatsRoutes.js'
 
 dotenv.config()
 
@@ -30,11 +31,12 @@ app.use(cookieParser())
 app.use('/api/user', userRoutes)
 app.use('/api/person/cmca', cmcaPersonRoutes)
 app.use('/api/bankaccount/cmca', cmcaBankAccountRoutes)
-app.use('/api/person/minevillages', mvPersonRoutes)
-app.use('/api/bankaccount/minevillages', mvBankAccountRoutes)
+app.use('/api/person/mv', mvPersonRoutes)
+app.use('/api/bankaccount/mv', mvBankAccountRoutes)
 app.use('/api/village', villageRoutes)
 app.use('/api/region', regionRoutes)
-app.use('/api/cmca/keystats', cmcaStatsRoutes)
+app.use('/api/cmca/keystats', cmcaKeyStatsRoutes)
+app.use('/api/mv/keystats', mvKeyStatsRoutes)
 
 app.use(notFound)
 app.use(errorHandler)

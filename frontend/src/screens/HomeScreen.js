@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
-import { Container, Row, Col, Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Container, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import CmcaKeyStats from '../components/CmcaKeyStats'
+import MvKeyStats from '../components/MvKeyStats'
 import { setAlert } from '../actions/alertActions'
-import { getCmcaKeyStats } from '../actions/cmcaStatsActions'
+import { getCmcaKeyStats } from '../actions/cmcaKeyStatsActions'
+import { getMvKeyStats } from '../actions/mvKeyStatsActions'
 
 const HomeScreen = () => {
   const dispatch = useDispatch()
@@ -17,25 +18,21 @@ const HomeScreen = () => {
     error: errorCmcaKeyStats
   } = cmcaKeyStatList
 
+  const mvKeyStatList = useSelector((state) => state.mvKeyStatList)
+  const {
+    loading: loadingMvKeyStats,
+    mvKeyStats,
+    error: errorMvKeyStats
+  } = mvKeyStatList
+
   useEffect(() => {
     dispatch(getCmcaKeyStats())
+    dispatch(getMvKeyStats())
   }, [dispatch])
 
   const setError = () => {
     dispatch(setAlert(errorCmcaKeyStats, 'danger'))
-  }
-
-  const setDataSet2017People = () => {
-    sessionStorage.setItem('dataSetPeople', '2017')
-  }
-  const setDataSet2021People = () => {
-    sessionStorage.setItem('dataSetPeople', '2021')
-  }
-  const setDataSet2017BankAccount = () => {
-    sessionStorage.setItem('dataSetBankAccount', '2017')
-  }
-  const setDataSet2021BankAccount = () => {
-    sessionStorage.setItem('dataSetBankAccount', '2021')
+    dispatch(setAlert(errorMvKeyStats, 'danger'))
   }
 
   if (errorCmcaKeyStats) return setError()
@@ -44,27 +41,20 @@ const HomeScreen = () => {
     <Container>
       <Row className='justify-content-center text-center'>
         <Col sm='12' md='6'>
-          <h2 className='bg-orange text-light sm-title'>CMCA KEY STATISTICS</h2>
+          <h2 className='title-label'>CMCA KEY FIGURES</h2>
         </Col>
       </Row>
       {loadingCmcaKeyStats ? (
         <Loader />
       ) : (
-        <CmcaKeyStats
-          cmcaKeyStats={cmcaKeyStats}
-          setDataSet2017People={setDataSet2017People}
-          setDataSet2021People={setDataSet2021People}
-          setDataSet2017BankAccount={setDataSet2017BankAccount}
-          setDataSet2021BankAccount={setDataSet2021BankAccount}
-        />
+        <CmcaKeyStats cmcaKeyStats={cmcaKeyStats} />
       )}
       <Row className='justify-content-center text-center'>
         <Col sm='12' md='6'>
-          <h2 className='bg-orange text-light sm-title'>
-            MINE VILLAGES KEY STATISTICS
-          </h2>
+          <h2 className='title-label'>MINE VILLAGES KEY FIGURES</h2>
         </Col>
       </Row>
+      {loadingMvKeyStats ? <Loader /> : <MvKeyStats mvKeyStats={mvKeyStats} />}
     </Container>
   )
 }

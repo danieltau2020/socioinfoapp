@@ -1,0 +1,125 @@
+:root {
+  --white-color: #fff;
+  --black-color: #42413d;
+  --gray-color: #f6f5f1;
+  --gray-dark-color: #d6d5d2;
+
+  --orange-color-h: 24;
+  --orange-color-s: 100%;
+  --orange-color-l: 46%;
+
+  --grey-color-h: 0;
+  --grey-color-s: 0%;
+  --grey-color-l: 32%;
+
+  --orange-color: hsl(
+    var(--orange-color-h),
+    var(--orange-color-s),
+    var(--orange-color-l)
+  );
+  --orange-color-10: hsl(
+    var(--orange-color-h),
+    var(--orange-color-s),
+    calc(var(--orange-color-l) + 5%)
+  );
+  --orange-color-20: hsl(
+    var(--orange-color-h),
+    var(--orange-color-s),
+    calc(var(--orange-color-l) + 10%)
+  );
+  --orange-color-30: hsl(
+    var(--orange-color-h),
+    var(--orange-color-s),
+    calc(var(--orange-color-l) + 15%)
+  );
+  --orange-color-40: hsl(
+    var(--orange-color-h),
+    var(--orange-color-s),
+    calc(var(--orange-color-l) + 20%)
+  );
+  --orange-color-50: hsl(
+    var(--orange-color-h),
+    var(--orange-color-s),
+    calc(var(--orange-color-l) + 25%)
+  );
+  --orange-color-60: hsl(
+    var(--orange-color-h),
+    var(--orange-color-s),
+    calc(var(--orange-color-l) + 30%)
+  );
+  --orange-color-70: hsl(
+    var(--orange-color-h),
+    var(--orange-color-s),
+    calc(var(--orange-color-l) + 35%)
+  );
+  --orange-color-80: hsl(
+    var(--orange-color-h),
+    var(--orange-color-s),
+    calc(var(--orange-color-l) + 40%)
+  );
+
+  --grey-color: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    var(--grey-color-l)
+  );
+  --grey-color-10: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 5%)
+  );
+  --grey-color-20: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 10%)
+  );
+  --grey-color-30: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 15%)
+  );
+  --grey-color-40: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 20%)
+  );
+  --grey-color-50: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 25%)
+  );
+  --grey-color-60: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 30%)
+  );
+  --grey-color-70: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 35%)
+  );
+  --grey-color-80: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 40%)
+  );
+  --grey-color-90: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 50%)
+  );
+  --grey-color-100: hsl(
+    var(--grey-color-h),
+    var(--grey-color-s),
+    calc(var(--grey-color-l) + 60%)
+  );
+
+  /* App theme / Brand */
+  --primary-color: var(--orange-color-30);
+  --primary-border-color: var(--orange-color-30);
+  --primary-hover-color: var(--orange-color);
+
+  --secondary-color: var(--grey-color-70);
+  --secondary-border-color: var(--grey-color-70);
+  --secondary-hover-color: var(--grey-color);
+}

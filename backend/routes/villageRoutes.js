@@ -1,8 +1,9 @@
 import express from 'express'
-import { updateRegionObjectId } from '../controllers/villageController.js'
+import { getMineVillages } from '../controllers/villageController.js'
+import { protect } from '../middleware/authMiddleware.js'
 
 const router = express.Router({ mergeParams: true })
 
-// router.route('/').get(updateRegionObjectId)
+router.route('/mv').get(protect, getMineVillages)
 
 export default router

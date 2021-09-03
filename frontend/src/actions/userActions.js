@@ -47,7 +47,7 @@ export const logout = () => async (dispatch) => {
   await axios.get('/api/user/logout')
 
   sessionStorage.removeItem('userInfo')
-  sessionStorage.removeItem('dataSetPeople')
+  sessionStorage.removeItem('dataSetPeopleYear')
   sessionStorage.removeItem('userSetBankAccount')
 
   dispatch({

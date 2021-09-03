@@ -18,22 +18,9 @@ const Header = () => {
     history.push('/')
   }
 
-  const setDataSet2017People = () => {
-    sessionStorage.setItem('dataSetPeople', '2017')
-  }
-  const setDataSet2021People = () => {
-    sessionStorage.setItem('dataSetPeople', '2021')
-  }
-  const setDataSet2017BankAccount = () => {
-    sessionStorage.setItem('dataSetBankAccount', '2017')
-  }
-  const setDataSet2021BankAccount = () => {
-    sessionStorage.setItem('dataSetBankAccount', '2021')
-  }
-
   return (
     <header>
-      <Navbar collapseOnSelect expand='sm'>
+      <Navbar collapseOnSelect expand='lg'>
         <Container>
           {userInfo ? (
             <LinkContainer to='/home'>
@@ -44,12 +31,9 @@ const Header = () => {
               <Navbar.Brand>CRSD</Navbar.Brand>
             </LinkContainer>
           )}
-          <Navbar.Toggle
-            aria-controls='responsive-navbar-nav'
-            className='navbar-dark'
-          />
+          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
           <Navbar.Collapse id='responsive-navbar-nav'>
-            <Nav className='d-flex justify-content-center ms-auto align-items-center'>
+            <Nav className='ms-auto align-items-center text-center'>
               {userInfo ? (
                 <>
                   <NavDropdown
@@ -60,14 +44,20 @@ const Header = () => {
                     }
                     id='peoplemenu'
                   >
-                    <LinkContainer to='/people/2017/dataset'>
-                      <NavDropdown.Item onClick={() => setDataSet2017People()}>
-                        CMCA 2017 Data Set
+                    <LinkContainer to={`/people/cmca/${'2017'}/dataset`}>
+                      <NavDropdown.Item>CMCA 2017 Data Set</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to={`/people/cmca/${'2021'}/dataset`}>
+                      <NavDropdown.Item>CMCA 2021 Data Set</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to={`/people/mv/${'2017'}/dataset`}>
+                      <NavDropdown.Item>
+                        Mine Villages 2017 Data Set
                       </NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to='/people/2021/dataset'>
-                      <NavDropdown.Item onClick={() => setDataSet2021People()}>
-                        CMCA 2021 Data Set
+                    <LinkContainer to={`/people/mv/${'2021'}/dataset`}>
+                      <NavDropdown.Item>
+                        Mine Villages 2021 Data Set
                       </NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
@@ -79,30 +69,29 @@ const Header = () => {
                     }
                     id='bankaccountmenu'
                   >
-                    <LinkContainer to='/bankaccount/2017/dataset'>
-                      <NavDropdown.Item
-                        onClick={() => setDataSet2017BankAccount()}
-                      >
-                        CMCA 2017 Data Set
+                    <LinkContainer to={`/bankaccount/cmca/${'2017'}/dataset`}>
+                      <NavDropdown.Item>CMCA 2017 Data Set</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to={`/bankaccount/cmca/${'2021'}/dataset`}>
+                      <NavDropdown.Item>CMCA 2021 Data Set</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to={`/bankaccount/mv/${'2017'}/dataset`}>
+                      <NavDropdown.Item>
+                        Mine Villages 2017 Data Set
                       </NavDropdown.Item>
                     </LinkContainer>
-                    <LinkContainer to='/bankaccount/2021/dataset'>
-                      <NavDropdown.Item
-                        onClick={() => setDataSet2021BankAccount()}
-                      >
-                        CMCA 2021 Data Set
+                    <LinkContainer to={`/bankaccount/mv/${'2021'}/dataset`}>
+                      <NavDropdown.Item>
+                        Mine Villages 2021 Data Set
                       </NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
-                  {/* <LinkContainer to='/about'>
-                    <Nav.Link>About</Nav.Link>
-                  </LinkContainer> */}
                   <LinkContainer to='#' className='ms-5 nav-welcome'>
                     <Nav.Link onClick={logoutHandler}>Sign Out</Nav.Link>
                   </LinkContainer>
-                  <p className='mb-0 ms-5 nav-welcome'>
+                  <Navbar.Text className='mb-0 nav-welcome'>
                     Welcome! {userInfo.name}
-                  </p>
+                  </Navbar.Text>
                 </>
               ) : (
                 <LinkContainer to='/login'>

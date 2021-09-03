@@ -8,9 +8,9 @@ import Village from '../models/villageModel.js'
 // @access  Private
 const getCmcaPersons = asynchandler(async (req, res) => {
   const villageCode = req.query.villageCode
-  const dataSet = req.query.dataSet
+  const year = req.query.year
 
-  if (dataSet === '2017') {
+  if (year === '2017') {
     if (villageCode) {
       const persons = await CmcaPerson2017.find({ villageCode })
       res.status(200).json(persons)
@@ -18,7 +18,7 @@ const getCmcaPersons = asynchandler(async (req, res) => {
       const persons = await CmcaPerson2017.find({})
       res.status(200).json(persons)
     }
-  } else if (dataSet === '2021') {
+  } else if (year === '2021') {
     if (villageCode) {
       const persons = await CmcaPerson2021.find({ villageCode })
       res.status(200).json(persons)

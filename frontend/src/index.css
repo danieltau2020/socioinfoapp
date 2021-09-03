@@ -1,8 +1,18 @@
+@import 'colors.css';
+@import 'controlstyle.css';
+@import 'tablestyle.css';
+@import 'navbarstyle.css';
+@import 'homestyle.css';
+@import 'screenstyle.css';
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #525252;
+}
+
+.app-styleguide {
+  font-family: 'Helvetica', sans-serif;
 }
 
 .main-container {
@@ -15,38 +25,6 @@
   flex: 1;
   display: flex;
   margin-top: 2rem;
-}
-
-.navbar {
-  background-color: #525252;
-}
-
-.nav-welcome {
-  color: white;
-}
-
-.navbar .navbar-brand {
-  color: white;
-}
-
-.navbar .navbar-brand:hover {
-  color: #ed7522;
-}
-
-.navbar-light .navbar-nav .nav-link {
-  color: white;
-}
-
-.navbar-light .navbar-nav .nav-link:hover {
-  color: #ed7522;
-}
-
-.nav-link i {
-  color: white;
-}
-
-.nav-link > span {
-  color: white;
 }
 
 .main-footer {
@@ -74,10 +52,9 @@
 
 .otml-logo {
   position: relative;
-  background: url('./img/otml.png') no-repeat center center/cover;
-  z-index: 50;
   height: 100px;
   width: 278px;
+  background: url('./img/otml.png') no-repeat center center/cover;
   object-fit: contain;
 }
 
@@ -93,58 +70,12 @@
   text-align: center;
 }
 
-.btn-bg-orange {
-  background-color: #ed7522;
-  color: #fff;
-  border: none;
-}
-
-.orange {
-  color: #ed7522;
-}
-
-.bg-orange {
-  background-color: #ed7522;
-}
-
-.data-set .nav-link {
-  padding: 0.2rem 0;
-  margin: 1rem 0.5rem 0 0;
-  color: #fff;
-}
-
-.data-set .nav-link:hover {
-  font-weight: 500;
-}
-
-table thead {
-  text-align: center;
-  background-color: #ed7522;
-}
-
-table th {
-  font-weight: normal;
-  font-weight: bold;
-  white-space: nowrap;
-  color: white;
-}
-
-table tbody {
-  text-align: center;
-}
-
-.card {
-  width: 16rem;
-}
-
-.card:hover {
-  background-color: #ed7522;
-  color: white;
-}
-
 @media (max-width: 768px) {
   body {
     font-size: 12px;
+  }
+  header > * {
+    height: auto;
   }
   .navbar-light .navbar-nav .nav-link {
     font-size: 14px;

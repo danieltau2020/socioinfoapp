@@ -7,7 +7,7 @@ import Routes from './routes/Routes'
 const App = () => {
   return (
     <Router>
-      <div className='main-container'>
+      <div className='main-container app-styleguide'>
         <Header />
         <Switch>
           <Route exact path='/' component={LandingScreen} />

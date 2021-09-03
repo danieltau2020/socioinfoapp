@@ -1,0 +1,53 @@
+@import 'colors.css';
+
+.app-styleguide button {
+  font-size: 1rem;
+  /* padding: 0.25em; */
+  /* border: 0.125em solid transparent; */
+  box-shadow: none !important;
+  border: none;
+  background: var(--secondary-color);
+  color: var(--white-color);
+}
+
+.app-styleguide button:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+  color: white;
+}
+
+.app-styleguide button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: all;
+}
+
+.app-styleguide .form-select {
+  color: var(--black-color);
+}
+
+.app-styleguide a {
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+
+.app-styleguide a:hover {
+  font-size: 1rem;
+  color: var(--primary-hover-color);
+}
+
+.app-styleguide input {
+  font-size: 1rem;
+  color: var(--black-color);
+  /* padding: 0.25em; */
+  /* border: 0.125em solid var(--primary-border-color);
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.8)
+  );
+  background-color: var(--primary-border-color); */
+  /* border: none; */
+}
+
+.app-styleguide input:focus {
+  background-color: white;
+}

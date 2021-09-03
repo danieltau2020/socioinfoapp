@@ -83,6 +83,6 @@ const PersonSchema = new Schema(
   { timestamps: true }
 )
 
-const MineVillagesPerson2017 = mongoose.model('mvpeople2017', PersonSchema)
+const MvPerson2017 = mongoose.model('mvpeople2017', PersonSchema)
 
-export default MineVillagesPerson2017
+export default MvPerson2017

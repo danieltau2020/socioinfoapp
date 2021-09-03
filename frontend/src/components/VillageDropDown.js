@@ -1,7 +1,11 @@
 import React from 'react'
 import { Form } from 'react-bootstrap'
 
-const VillageDropDown = ({ regions, villageSelectedHandler }) => {
+const VillageDropDown = ({
+  regions,
+  villageSelectedHandler,
+  defaultVillage
+}) => {
   return (
     <Form.Control
       className='form-select'
@@ -9,7 +13,7 @@ const VillageDropDown = ({ regions, villageSelectedHandler }) => {
       variant='light'
       style={{ width: 'auto' }}
       onChange={(e) => villageSelectedHandler(e)}
-      defaultValue='101'
+      defaultValue={defaultVillage}
     >
       <option value=''>--All--</option>
       {regions.map((region) => (

@@ -50,7 +50,7 @@ const BankAccountSchema = new Schema(
 )
 
 const CmcaBankAccount2021 = mongoose.model(
-  'BankAccounts2021',
+  'cmcabankaccounts2021',
   BankAccountSchema
 )
 

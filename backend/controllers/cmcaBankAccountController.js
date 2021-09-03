@@ -7,9 +7,9 @@ import CmcaBankAccount2021 from '../models/cmcaBankAccountModel2021.js'
 // @access  Private
 const getCmcaBankAccounts = asynchandler(async (req, res) => {
   const villageCode = req.query.villageCode
-  const dataSet = req.query.dataSet
+  const year = req.query.year
 
-  if (dataSet === '2017') {
+  if (year === '2017') {
     if (villageCode) {
       const bankAccounts = await CmcaBankAccount2017.find({ villageCode })
       res.status(200).json(bankAccounts)
@@ -17,7 +17,7 @@ const getCmcaBankAccounts = asynchandler(async (req, res) => {
       const bankAccounts = await CmcaBankAccount2017.find({})
       res.status(200).json(bankAccounts)
     }
-  } else if (dataSet === '2021') {
+  } else if (year === '2021') {
     if (villageCode) {
       const bankAccounts = await CmcaBankAccount2021.find({ villageCode })
       res.status(200).json(bankAccounts)

@@ -4,8 +4,10 @@ import PrivateRoute from './PrivateRoute'
 import Footer from '../components/Footer'
 import LoginScreen from '../screens/LoginScreen'
 import HomeScreen from '../screens/HomeScreen'
-import PersonListScreen from '../screens/PersonListScreen'
-import BankAccountListScreen from '../screens/BankAccountListScreen'
+import CmcaPersonListScreen from '../screens/CmcaPersonListScreen'
+import CmcaBankAccountListScreen from '../screens/CmcaBankAccountListScreen'
+import MvPersonListScreen from '../screens/MvPersonListScreen'
+import MvBankAccountListScreen from '../screens/MvBankAccountListScreen'
 import NotFound from '../components/NotFound'
 import AlertMsg from '../components/AlertMsg'
 
@@ -19,23 +21,23 @@ const Routes = () => {
           <Route exact path='/login' component={LoginScreen} />
           <PrivateRoute
             exact
-            path='/people/2017/dataset'
-            component={PersonListScreen}
+            path='/people/cmca/:year/dataset'
+            component={CmcaPersonListScreen}
           />
           <PrivateRoute
             exact
-            path='/people/2021/dataset'
-            component={PersonListScreen}
+            path='/bankaccount/cmca/:year/dataset'
+            component={CmcaBankAccountListScreen}
           />
           <PrivateRoute
             exact
-            path='/bankaccount/2017/dataset'
-            component={BankAccountListScreen}
+            path='/people/mv/:year/dataset'
+            component={MvPersonListScreen}
           />
           <PrivateRoute
             exact
-            path='/bankaccount/2021/dataset'
-            component={BankAccountListScreen}
+            path='/bankaccount/mv/:year/dataset'
+            component={MvBankAccountListScreen}
           />
           <PrivateRoute component={NotFound} />
         </Switch>

@@ -5,25 +5,27 @@ import {
   REGION_LIST_FAIL
 } from '../constants/regionConstants'
 
-export const getRegionVillage = () => async (dispatch) => {
-  try {
-    dispatch({
-      type: REGION_LIST_REQUEST
-    })
+export const getRegionVillage =
+  (regionCode = '') =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: REGION_LIST_REQUEST
+      })
 
-    const { data } = await axios.get('/api/region')
+      const { data } = await axios.get(`/api/region?regionCode=${regionCode}`)
 
-    dispatch({
-      type: REGION_LIST_SUCCESS,
-      payload: data
-    })
-  } catch (error) {
-    dispatch({
-      type: REGION_LIST_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message
-    })
+      dispatch({
+        type: REGION_LIST_SUCCESS,
+        payload: data
+      })
+    } catch (error) {
+      dispatch({
+        type: REGION_LIST_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message
+      })
+    }
   }
-}

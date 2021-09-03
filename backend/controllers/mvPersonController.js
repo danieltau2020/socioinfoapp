@@ -1,29 +1,31 @@
 import asynchandler from 'express-async-handler'
-import MineVillagesPerson2017 from '../models/mvPersonModel2017.js'
-import MineVillagesPerson2021 from '../models/mvBankAccountModel2021.js'
+import MvPerson2017 from '../models/mvPersonModel2017.js'
+import MvPerson2021 from '../models/mvPersonModel2021.js'
 import Village from '../models/villageModel.js'
 
 // @desc    Fetch all persons from mine villages
-// @route   GET /api/person/minevillages
+// @route   GET /api/person/mv
 // @access  Private
-const getMVPersons = asynchandler(async (req, res) => {
+const getMvPersons = asynchandler(async (req, res) => {
   const villageCode = req.query.villageCode
-  const dataSet = req.query.dataSet
+  const year = req.query.year
 
-  if (dataSet === '2017') {
+  if (year === '2017') {
     if (villageCode) {
-      const persons = await MineVillagesPerson2017.find({ villageCode })
+      const persons = await MvPerson2017.find({ villageCode })
+
       res.status(200).json(persons)
     } else {
-      const persons = await MineVillagesPerson2017.find({})
+      const persons = await MvPerson2017.find({})
+
       res.status(200).json(persons)
     }
-  } else if (dataSet === '2021') {
+  } else if (year === '2021') {
     if (villageCode) {
-      const persons = await MineVillagesPerson2021.find({ villageCode })
+      const persons = await MvPerson2021.find({ villageCode })
       res.status(200).json(persons)
     } else {
-      const persons = await MineVillagesPerson2021.find({})
+      const persons = await MvPerson2021.find({})
       res.status(200).json(persons)
     }
   } else {
@@ -60,4 +62,4 @@ const updateVillageObjectId = asynchandler(async (req, res) => {
   res.json(persons)
 })
 
-export { getMVPersons, updateVillageObjectId }
+export { getMvPersons, updateVillageObjectId }

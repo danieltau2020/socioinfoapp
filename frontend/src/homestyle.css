@@ -1,0 +1,27 @@
+@import 'colors.css';
+
+.app-styleguide .card {
+  width: 16rem;
+  /* border: 0.0625em solid var(--orange-color-40); */
+  color: var(--black-color);
+}
+
+.app-styleguide .card:hover {
+  background-color: var(--orange-color-40);
+  color: var(--white-color);
+}
+
+.app-styleguide .title-label {
+  font-size: 1.5rem;
+  padding: 0.2em;
+  background-color: var(--orange-color-30);
+  color: var(--white-color);
+}
+
+.app-styleguide .card h1 {
+  font-size: 1.5rem;
+}
+
+.app-styleguide .card .card-title {
+  font-size: 1rem;
+}

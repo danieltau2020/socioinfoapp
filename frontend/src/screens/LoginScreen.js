@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Button, Container, Row } from 'react-bootstrap'
+import { Form, Button, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
@@ -61,7 +61,7 @@ const LoginScreen = ({ location, history }) => {
             ></Form.Control>
           </Form.Group>
           <div className='d-grid'>
-            <Button type='submit' className='mt-3 btn-bg-orange'>
+            <Button type='submit' className='mt-3 btn-primary'>
               Sign In
             </Button>
           </div>

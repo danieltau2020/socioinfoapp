@@ -6,19 +6,15 @@ import {
 } from '../constants/cmcaPersonConstants'
 
 export const getAllCmcaPersons =
-  (villageCode = '') =>
+  (villageCode = '', year) =>
   async (dispatch) => {
     try {
       dispatch({
         type: CMCA_PERSON_LIST_REQUEST
       })
 
-      let dataSet = sessionStorage.getItem('dataSetPeople')
-        ? JSON.parse(sessionStorage.getItem('dataSetPeople'))
-        : ''
-
       const { data } = await axios.get(
-        `/api/person/cmca?villageCode=${villageCode}&dataSet=${dataSet}`
+        `/api/person/cmca?villageCode=${villageCode}&year=${year}`
       )
 
       dispatch({

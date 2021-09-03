@@ -1,0 +1,19 @@
+@import 'colors.css';
+
+table thead {
+  text-align: center;
+  background-color: var(--orange-color-40);
+}
+
+table th {
+  white-space: nowrap;
+  color: var(--white-color) !important;
+}
+
+table tbody {
+  text-align: center;
+}
+
+table tbody tr td {
+  color: var(--black-color);
+}

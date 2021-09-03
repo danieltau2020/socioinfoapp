@@ -5,16 +5,22 @@ import { alertReducer } from './reducers/alertReducers'
 import { userLoginReducer } from './reducers/userReducers'
 import { cmcaPersonListReducer } from './reducers/cmcaPersonReducers'
 import { cmcaBankAccountListReducer } from './reducers/cmcaBankAccountReducers'
+import { mvPersonListReducer } from './reducers/mvPersonReducers'
+import { mvBankAccountListReducer } from './reducers/mvBankAccountReducers'
 import { regionListReducer } from './reducers/regionReducers'
-import { cmcaStatsReducer } from './reducers/cmcaStatsReducers'
+import { cmcaKeyStatsReducer } from './reducers/cmcaKeyStatsReducers'
+import { mvKeyStatsReducer } from './reducers/mvKeyStatsReducers'
 
 const reducer = combineReducers({
   alerts: alertReducer,
   userLogin: userLoginReducer,
   cmcaPersonList: cmcaPersonListReducer,
   cmcaBankAccountList: cmcaBankAccountListReducer,
+  mvPersonList: mvPersonListReducer,
+  mvBankAccountList: mvBankAccountListReducer,
   regionList: regionListReducer,
-  cmcaKeyStatList: cmcaStatsReducer
+  cmcaKeyStatList: cmcaKeyStatsReducer,
+  mvKeyStatList: mvKeyStatsReducer
 })
 
 const userInfoFromStorage = sessionStorage.getItem('userInfo')

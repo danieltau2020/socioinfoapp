@@ -83,6 +83,6 @@ const PersonSchema = new Schema(
   { timestamps: true }
 )
 
-const CmcaPerson2021 = mongoose.model('People2021', PersonSchema)
+const CmcaPerson2021 = mongoose.model('cmcapeople2021', PersonSchema)
 
 export default CmcaPerson2021

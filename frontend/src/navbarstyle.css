@@ -1,0 +1,45 @@
+@import 'colors.css';
+
+.app-styleguide .navbar .navbar-brand {
+  font-size: 1.5rem;
+  color: var(--white-color);
+}
+
+.app-styleguide .navbar .navbar-brand:hover {
+  color: var(--grey-color-90);
+}
+
+.app-styleguide header {
+  background: var(--primary-color);
+}
+
+.app-styleguide .navbar-light {
+  height: 4rem;
+}
+
+.app-styleguide .navbar-light .navbar-nav .nav-link,
+.app-styleguide .navbar-light .navbar-nav .navbar-text {
+  align-items: center;
+  color: white;
+}
+
+.app-styleguide .navbar-light .navbar-nav .nav-link:hover {
+  color: var(--grey-color-90);
+}
+
+.app-styleguide .navbar-light .dropdown .dropdown-item {
+  color: var(--black-color);
+}
+
+/* .app-styleguide .navbar-light .dropdown .dropdown-item:focus {
+  background-color: var(--orange-color-80);
+} */
+
+.app-styleguide .navbar-light .dropdown .dropdown-item:hover {
+  background-color: var(--orange-color-50) !important;
+  color: var(--white-color);
+}
+
+.app-styleguide .navbar-light .dropdown .dropdown-item:visited {
+  background-color: var(--orange-color-80);
+}

@@ -6,7 +6,7 @@ const LandingScreen = () => {
       <section className='text-center landing'>
         <div className='dark-overlay'>
           <div className='landing-inner'>
-            <image className='otml-logo mb-5' />
+            <div className='otml-logo mb-5' />
             <h2 className='cr-title'>Community Relations Department</h2>
             <h2 className='cr-title'>Socioeconomic Database</h2>
           </div>

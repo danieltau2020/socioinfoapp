@@ -1,0 +1,29 @@
+@import 'colors.css';
+
+.app-styleguide .h4-screen,
+.app-styleguide .p-screen {
+  color: var(--black-color);
+}
+
+.app-styleguide .btn-secondary {
+  background-color: var(--grey-color-100);
+  color: var(--black-color);
+}
+
+.app-styleguide .btn-primary {
+  border-radius: 0.2em;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.app-styleguide .btn-paginate {
+  border-radius: 0 !important;
+  background-color: var(--orange-color-40);
+  color: var(--black-color);
+  outline: none !important;
+}
+
+.app-styleguide .btn-paginate:focus {
+  outline: none !important;
+  outline-offset: none !important;
+}

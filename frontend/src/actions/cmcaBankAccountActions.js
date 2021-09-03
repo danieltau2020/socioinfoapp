@@ -6,19 +6,15 @@ import {
 } from '../constants/cmcaBankAccountConstants'
 
 export const getCmcaBankAccounts =
-  (villageCode = '') =>
+  (villageCode = '', year) =>
   async (dispatch) => {
     try {
       dispatch({
         type: CMCA_BANK_ACCOUNT_LIST_REQUEST
       })
 
-      let dataSet = sessionStorage.getItem('dataSetBankAccount')
-        ? JSON.parse(sessionStorage.getItem('dataSetBankAccount'))
-        : ''
-
       const { data } = await axios.get(
-        `/api/bankaccount/cmca?villageCode=${villageCode}&dataSet=${dataSet}`
+        `/api/bankaccount/cmca?villageCode=${villageCode}&year=${year}`
       )
 
       dispatch({

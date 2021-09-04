@@ -8,6 +8,8 @@ import CmcaPersonListScreen from '../screens/CmcaPersonListScreen'
 import CmcaBankAccountListScreen from '../screens/CmcaBankAccountListScreen'
 import MvPersonListScreen from '../screens/MvPersonListScreen'
 import MvBankAccountListScreen from '../screens/MvBankAccountListScreen'
+import CmcaRegionPopulationScreen from '../screens/CmcaRegionPopulationScreen'
+import MvPopulationScreen from '../screens/MvPopulationScreen'
 import NotFound from '../components/NotFound'
 import AlertMsg from '../components/AlertMsg'
 
@@ -39,7 +41,17 @@ const Routes = () => {
             path='/bankaccount/mv/:year/dataset'
             component={MvBankAccountListScreen}
           />
-          <PrivateRoute component={NotFound} />
+          <PrivateRoute
+            exact
+            path='/statistics/population/cmca'
+            component={CmcaRegionPopulationScreen}
+          />
+          <PrivateRoute
+            exact
+            path='/statistics/population/mv'
+            component={MvPopulationScreen}
+          />
+          <Route component={NotFound} />
         </Switch>
       </main>
       <Footer />

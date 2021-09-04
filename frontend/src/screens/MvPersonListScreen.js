@@ -34,7 +34,6 @@ const MvPersonListScreen = ({ match }) => {
   const setError = () => {
     dispatch(setAlert(errorRegion, 'danger'))
     dispatch(setAlert(errorPerson, 'danger'))
-    return
   }
 
   return (

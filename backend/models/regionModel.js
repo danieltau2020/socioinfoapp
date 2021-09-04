@@ -37,6 +37,6 @@ RegionSchema.virtual('villages', {
   justOne: false
 })
 
-const Region = mongoose.model('Region', RegionSchema)
+const Region = mongoose.model('regions', RegionSchema)
 
 export default Region

@@ -1,6 +1,6 @@
 import asynchandler from 'express-async-handler'
-import MvPerson2017 from '../models/mvPersonModel2017.js'
-import MvPerson2021 from '../models/mvPersonModel2021.js'
+import MvPerson2017 from '../models/mvPerson2017Model.js'
+import MvPerson2021 from '../models/mvPerson2021Model.js'
 import Village from '../models/villageModel.js'
 
 // @desc    Fetch all persons from mine villages

@@ -1,17 +1,10 @@
 import asynchandler from 'express-async-handler'
 import Village from '../models/villageModel.js'
+import Region from '../models/regionModel.js'
 
-// @desc    Fetch mine villages
-// @route   GET /api/villages/mv
+// @desc    Update region object id in village table
+// @route   GET /api/villages/updateregionobjectid
 // @access  Private
-const getMineVillages = asynchandler(async (req, res) => {
-  const villages = await Village.find({ villageCode: '101' }).sort({
-    villageCode: 1
-  })
-
-  res.status(200).json(villages)
-})
-
 const updateRegionObjectId = asynchandler(async (req, res) => {
   let villages = await Village.find({}).lean()
   const regions = await Region.find({})
@@ -36,4 +29,4 @@ const updateRegionObjectId = asynchandler(async (req, res) => {
   res.json(villages)
 })
 
-export { getMineVillages, updateRegionObjectId }
+export { updateRegionObjectId }

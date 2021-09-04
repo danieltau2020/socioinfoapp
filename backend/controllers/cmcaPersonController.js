@@ -1,6 +1,6 @@
 import asynchandler from 'express-async-handler'
-import CmcaPerson2017 from '../models/cmcaPersonModel2017.js'
-import CmcaPerson2021 from '../models/cmcaPersonModel2021.js'
+import CmcaPerson2017 from '../models/cmcaPerson2017Model.js'
+import CmcaPerson2021 from '../models/cmcaPerson2021Model.js'
 import Village from '../models/villageModel.js'
 
 // @desc    Fetch all persons from cmca regions

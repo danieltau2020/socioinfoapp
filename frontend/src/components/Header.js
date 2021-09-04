@@ -24,11 +24,11 @@ const Header = () => {
         <Container>
           {userInfo ? (
             <LinkContainer to='/home'>
-              <Navbar.Brand>CRSD</Navbar.Brand>
+              <Navbar.Brand>SInfo</Navbar.Brand>
             </LinkContainer>
           ) : (
             <LinkContainer to='/'>
-              <Navbar.Brand>CRSD</Navbar.Brand>
+              <Navbar.Brand>SInfo</Navbar.Brand>
             </LinkContainer>
           )}
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -43,21 +43,22 @@ const Header = () => {
                       </span>
                     }
                     id='peoplemenu'
+                    renderMenuOnMount={true}
                   >
                     <LinkContainer to={`/people/cmca/${'2017'}/dataset`}>
-                      <NavDropdown.Item>CMCA 2017 Data Set</NavDropdown.Item>
+                      <NavDropdown.Item>CMCA 2017 Dataset</NavDropdown.Item>
                     </LinkContainer>
                     <LinkContainer to={`/people/cmca/${'2021'}/dataset`}>
-                      <NavDropdown.Item>CMCA 2021 Data Set</NavDropdown.Item>
+                      <NavDropdown.Item>CMCA 2021 Dataset</NavDropdown.Item>
                     </LinkContainer>
                     <LinkContainer to={`/people/mv/${'2017'}/dataset`}>
                       <NavDropdown.Item>
-                        Mine Villages 2017 Data Set
+                        Mine Villages 2017 Dataset
                       </NavDropdown.Item>
                     </LinkContainer>
                     <LinkContainer to={`/people/mv/${'2021'}/dataset`}>
                       <NavDropdown.Item>
-                        Mine Villages 2021 Data Set
+                        Mine Villages 2021 Dataset
                       </NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
@@ -68,28 +69,49 @@ const Header = () => {
                       </span>
                     }
                     id='bankaccountmenu'
+                    renderMenuOnMount={true}
                   >
                     <LinkContainer to={`/bankaccount/cmca/${'2017'}/dataset`}>
-                      <NavDropdown.Item>CMCA 2017 Data Set</NavDropdown.Item>
+                      <NavDropdown.Item>CMCA 2017 Dataset</NavDropdown.Item>
                     </LinkContainer>
                     <LinkContainer to={`/bankaccount/cmca/${'2021'}/dataset`}>
-                      <NavDropdown.Item>CMCA 2021 Data Set</NavDropdown.Item>
+                      <NavDropdown.Item>CMCA 2021 Dataset</NavDropdown.Item>
                     </LinkContainer>
                     <LinkContainer to={`/bankaccount/mv/${'2017'}/dataset`}>
                       <NavDropdown.Item>
-                        Mine Villages 2017 Data Set
+                        Mine Villages 2017 Dataset
                       </NavDropdown.Item>
                     </LinkContainer>
                     <LinkContainer to={`/bankaccount/mv/${'2021'}/dataset`}>
                       <NavDropdown.Item>
-                        Mine Villages 2021 Data Set
+                        Mine Villages 2021 Dataset
                       </NavDropdown.Item>
                     </LinkContainer>
                   </NavDropdown>
-                  <LinkContainer to='#' className='ms-5 nav-welcome'>
-                    <Nav.Link onClick={logoutHandler}>Sign Out</Nav.Link>
+                  <NavDropdown
+                    title={
+                      <span>
+                        <i className='fas fa-chart-line'></i> Statistics
+                      </span>
+                    }
+                    id='statisticsmenu'
+                    renderMenuOnMount={true}
+                  >
+                    <LinkContainer to='/statistics/population/cmca'>
+                      <NavDropdown.Item>CMCA Population Stats</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to='/statistics/population/mv'>
+                      <NavDropdown.Item>
+                        Mine Villages Population Stats
+                      </NavDropdown.Item>
+                    </LinkContainer>
+                  </NavDropdown>
+                  <LinkContainer to='#' className='ms-5'>
+                    <Nav.Link onClick={logoutHandler}>
+                      <i className='fas fa-sign-out-alt'></i> Sign Out
+                    </Nav.Link>
                   </LinkContainer>
-                  <Navbar.Text className='mb-0 nav-welcome'>
+                  <Navbar.Text className='mb-0'>
                     Welcome! {userInfo.name}
                   </Navbar.Text>
                 </>

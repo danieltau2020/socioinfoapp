@@ -15,6 +15,13 @@ const PeopleList = ({
   const columns = useMemo(
     () => [
       { Header: 'Id', accessor: '_id' },
+      {
+        Header: '#',
+        id: 'row',
+        Cell: ({ row }) => {
+          return row.index + 1
+        }
+      },
       { Header: 'Village', accessor: 'villageName' },
       { Header: 'DW', accessor: 'dwelling' },
       { Header: 'HH', accessor: 'household' },
@@ -75,10 +82,10 @@ const PeopleList = ({
         </Col>
       </Row>
       <Row className='row-cols-2'>
-        <Col sm='6'>
+        <Col sm='6' md='6'>
           <p className='p-screen'>Filter by villages</p>
         </Col>
-        <Col sm='6' className='text-end'>
+        <Col sm='6' md='6' className='text-end'>
           <p className='p-screen'>
             {data.length < 1 ? (
               'Loading...'
@@ -90,7 +97,7 @@ const PeopleList = ({
           </p>
         </Col>
       </Row>
-      <Row className='justify-content-between mt-1'>
+      <Row className='justify-content-between mt-1 col-screen-filter-search'>
         <Col sm='3' md='3' className='d-grid'>
           <VillageDropDown
             regions={regions}
@@ -98,7 +105,7 @@ const PeopleList = ({
             defaultVillage={defaultVillage}
           />
         </Col>
-        <Col sm='3' md='4' className='mt-1'>
+        <Col sm='3' md='3' className='mt-1'>
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </Col>
       </Row>
@@ -107,7 +114,7 @@ const PeopleList = ({
         striped
         hover
         size='sm'
-        className='mt-4'
+        className='mt-3'
         {...getTableProps()}
       >
         <thead>
@@ -132,13 +139,13 @@ const PeopleList = ({
           })}
         </tbody>
       </Table>
-      <Row className='row-cols justify-content-center text-center align-items-center mt-1 mb-4'>
-        <Col sm='3' md='2' className='text-center mt-1'>
+      <Row className='justify-content-center text-center align-items-center mb-3 tbl-paginate-controls'>
+        <Col xs='6' sm='6' md='3' className='text-center mt-1'>
           <p className='p-screen m-0'>
             Page {pageIndex + 1} of {pageOptions.length}
           </p>
         </Col>
-        <Col sm='3' md='2' className='mt-1'>
+        <Col xs='6' sm='6' md='3' className='mt-1'>
           <Form.Control
             className='form-select me-1'
             as='select'
@@ -152,7 +159,7 @@ const PeopleList = ({
             ))}
           </Form.Control>
         </Col>
-        <Col sm='3' md='2' className='mt-1'>
+        <Col xs='6' sm='6' md='3' className='mt-1'>
           <Form.Control
             type='number'
             defaultValue={pageIndex + 1}
@@ -161,9 +168,10 @@ const PeopleList = ({
               const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
               gotoPage(pageNumber)
             }}
+            className='tbl-go-to-page'
           />
         </Col>
-        <Col sm='6' md='4' className='mt-1'>
+        <Col xs='6' sm='6' md='3' className='mt-1'>
           <Button
             className='btn-paginate'
             onClick={() => gotoPage(0)}

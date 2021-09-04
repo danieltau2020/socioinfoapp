@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
-const mvKeyStatsSchema = new Schema(
+const MvKeyStatsSchema = new Schema(
   {
     year: {
       type: String,
@@ -21,6 +21,6 @@ const mvKeyStatsSchema = new Schema(
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 )
 
-const MvKeyStats = mongoose.model('mvkeystats', mvKeyStatsSchema)
+const MvKeyStats = mongoose.model('mvkeystats', MvKeyStatsSchema)
 
 export default MvKeyStats

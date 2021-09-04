@@ -38,7 +38,6 @@ const MvBankAccountListScreen = ({ match }) => {
   const setError = () => {
     dispatch(setAlert(errorRegion, 'danger'))
     dispatch(setAlert(errorBankAccount, 'danger'))
-    return
   }
 
   return (

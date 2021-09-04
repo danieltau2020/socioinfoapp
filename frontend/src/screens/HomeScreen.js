@@ -30,12 +30,13 @@ const HomeScreen = () => {
     dispatch(getMvKeyStats())
   }, [dispatch])
 
-  const setError = () => {
+  const setErrorCmcaStats = () => {
     dispatch(setAlert(errorCmcaKeyStats, 'danger'))
-    dispatch(setAlert(errorMvKeyStats, 'danger'))
   }
 
-  if (errorCmcaKeyStats) return setError()
+  const setErrorMvStats = () => {
+    dispatch(setAlert(errorMvKeyStats, 'danger'))
+  }
 
   return (
     <Container>
@@ -44,6 +45,7 @@ const HomeScreen = () => {
           <h2 className='title-label'>CMCA KEY FIGURES</h2>
         </Col>
       </Row>
+      {errorCmcaKeyStats && setErrorCmcaStats()}
       {loadingCmcaKeyStats ? (
         <Loader />
       ) : (
@@ -54,6 +56,7 @@ const HomeScreen = () => {
           <h2 className='title-label'>MINE VILLAGES KEY FIGURES</h2>
         </Col>
       </Row>
+      {errorMvKeyStats && setErrorMvStats()}
       {loadingMvKeyStats ? <Loader /> : <MvKeyStats mvKeyStats={mvKeyStats} />}
     </Container>
   )

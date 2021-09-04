@@ -32,6 +32,6 @@ const VillageSchema = new Schema(
   { timestamps: true }
 )
 
-const Village = mongoose.model('Village', VillageSchema)
+const Village = mongoose.model('Villages', VillageSchema)
 
 export default Village

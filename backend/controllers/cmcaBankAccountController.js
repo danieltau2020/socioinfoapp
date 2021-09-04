@@ -1,6 +1,6 @@
 import asynchandler from 'express-async-handler'
-import CmcaBankAccount2017 from '../models/cmcaBankAccountModel2017.js'
-import CmcaBankAccount2021 from '../models/cmcaBankAccountModel2021.js'
+import CmcaBankAccount2017 from '../models/cmcaBankAccount2017Model.js'
+import CmcaBankAccount2021 from '../models/cmcaBankAccount2021Model.js'
 
 // @desc    Fetch all bank accounts
 // @route   GET /api/bankaccount

@@ -15,5 +15,6 @@ table tbody {
 }
 
 table tbody tr td {
+  white-space: nowrap;
   color: var(--black-color);
 }

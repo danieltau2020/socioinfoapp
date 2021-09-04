@@ -1,6 +1,6 @@
 import asynchandler from 'express-async-handler'
-import MvBankAccount2017 from '../models/mvBankAccountModel2017.js'
-import MvBankAccount2021 from '../models/mvBankAccountModel2021.js'
+import MvBankAccount2017 from '../models/mvBankAccount2017Model.js'
+import MvBankAccount2021 from '../models/mvBankAccount2021Model.js'
 
 // @desc    Fetch all bank accounts for mine vilalges
 // @route   GET /api/bankaccount/mv

@@ -8,7 +8,7 @@ const LandingScreen = () => {
           <div className='landing-inner'>
             <div className='otml-logo mb-5' />
             <h2 className='cr-title'>Community Relations Department</h2>
-            <h2 className='cr-title'>Socioeconomic Database</h2>
+            <h2 className='cr-title'>Socioeconomic Info</h2>
           </div>
         </div>
       </section>

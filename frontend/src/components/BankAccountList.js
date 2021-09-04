@@ -15,6 +15,13 @@ const BankAccountList = ({
   const columns = useMemo(
     () => [
       { Header: 'Id', accessor: '_id' },
+      {
+        Header: '#',
+        id: 'row',
+        Cell: ({ row }) => {
+          return row.index + 1
+        }
+      },
       { Header: 'Village', accessor: 'villageName' },
       { Header: 'DW', accessor: 'dwelling' },
       { Header: 'HH', accessor: 'household' },
@@ -63,21 +70,21 @@ const BankAccountList = ({
     <Container>
       <Row>
         <Col sm>
-          <h4>
+          <h4 className='h4-screen'>
             <i className='fas fa-money-check-alt'></i> Bank Account
           </h4>
         </Col>
       </Row>
       <Row className='text-center'>
         <Col sm>
-          <h4>{`${regionType} ${year} Dataset`}</h4>
+          <h4 className='h4-screen'>{`${regionType} ${year} Dataset`}</h4>
         </Col>
       </Row>
       <Row className='row-cols-2'>
-        <Col sm='6'>
+        <Col xs='6' sm='6' md='6'>
           <p>Filter by villages</p>
         </Col>
-        <Col sm='6' className='text-end'>
+        <Col xs='6' sm='6' md='6' className='text-end'>
           <p>
             {data.length < 1 ? (
               'Loading...'
@@ -89,15 +96,15 @@ const BankAccountList = ({
           </p>
         </Col>
       </Row>
-      <Row className='justify-content-between mt-1'>
-        <Col sm='3' md='3' className='d-grid'>
+      <Row className='justify-content-between mt-1 col-screen-filter-search'>
+        <Col xs='6' sm='3' md='3' className='d-grid'>
           <VillageDropDown
             regions={regions}
             villageSelectedHandler={villageSelected}
             defaultVillage={defaultVillage}
           />
         </Col>
-        <Col sm='3' md='4' className='mt-1'>
+        <Col xs='6' sm='3' md='3' className='mt-1'>
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </Col>
       </Row>
@@ -106,7 +113,7 @@ const BankAccountList = ({
         striped
         hover
         size='sm'
-        className='mt-4'
+        className='mt-3'
         {...getTableProps()}
       >
         <thead>
@@ -131,13 +138,13 @@ const BankAccountList = ({
           })}
         </tbody>
       </Table>
-      <Row className='row-cols justify-content-center text-center align-items-center mt-1 mb-4'>
-        <Col sm='3' md='2' className='text-center mt-1'>
+      <Row className='justify-content-center text-center align-items-center mb-3 tbl-paginate-controls'>
+        <Col xs='6' sm='6' md='3' className='text-center mt-1'>
           <p className='p-screen m-0'>
             Page {pageIndex + 1} of {pageOptions.length}
           </p>
         </Col>
-        <Col sm='3' md='2' className='text-center mt-1'>
+        <Col xs='6' sm='6' md='3' className='text-center mt-1'>
           <Form.Control
             className='form-select me-1'
             as='select'
@@ -151,7 +158,7 @@ const BankAccountList = ({
             ))}
           </Form.Control>
         </Col>
-        <Col sm='3' md='2' className='mt-1'>
+        <Col xs='6' sm='6' md='3' className='mt-1'>
           <Form.Control
             type='number'
             defaultValue={pageIndex + 1}
@@ -162,7 +169,7 @@ const BankAccountList = ({
             }}
           />
         </Col>
-        <Col sm='3' md='5' className='mt-1'>
+        <Col xs='6' sm='6' md='3' className='mt-1'>
           <Button
             className='btn-paginate'
             onClick={() => gotoPage(0)}

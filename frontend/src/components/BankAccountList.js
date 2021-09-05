@@ -86,13 +86,11 @@ const BankAccountList = ({
         </Col>
         <Col xs='6' sm='6' md='6' className='text-end'>
           <p>
-            {data.length < 1 ? (
-              'Loading...'
-            ) : rows.length < 1 ? (
-              'No records...'
-            ) : (
-              <div>{`${rows.length.toLocaleString()} Record(s)`}</div>
-            )}
+            {data.length < 1
+              ? 'Loading...'
+              : rows.length < 1
+              ? 'No records...'
+              : rows.length.toLocaleString() + ' Record(s)'}
           </p>
         </Col>
       </Row>

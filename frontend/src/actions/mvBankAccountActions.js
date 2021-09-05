@@ -4,6 +4,7 @@ import {
   MV_BANK_ACCOUNT_LIST_SUCCESS,
   MV_BANK_ACCOUNT_LIST_FAIL
 } from '../constants/mvBankAccountConstants'
+import { setAlert } from './alertActions'
 
 export const getMvBankAccounts =
   (villageCode = '', year) =>
@@ -22,6 +23,10 @@ export const getMvBankAccounts =
         payload: data
       })
     } catch (error) {
+      if (error) {
+        dispatch(setAlert(error.response.data.message, 'danger'))
+      }
+
       dispatch({
         type: MV_BANK_ACCOUNT_LIST_FAIL,
         payload:

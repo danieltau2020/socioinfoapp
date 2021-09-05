@@ -5,7 +5,6 @@ import Loader from '../components/Loader'
 import { getCmcaBankAccounts } from '../actions/cmcaBankAccountActions'
 import { getRegionVillage } from '../actions/regionActions'
 import BankAccountList from '../components/BankAccountList'
-import { setAlert } from '../actions/alertActions'
 import { CMCA_BANK_ACCOUNT_LIST_RESET } from '../constants/cmcaBankAccountConstants'
 
 const CmcaBankAccountListScreen = ({ match }) => {
@@ -15,14 +14,10 @@ const CmcaBankAccountListScreen = ({ match }) => {
   const defaultVillage = '201'
 
   const regionList = useSelector((state) => state.regionList)
-  const { loading: loadingRegion, error: errorRegion, regions } = regionList
+  const { loading: loadingRegion, regions } = regionList
 
   const cmcaBankAccountList = useSelector((state) => state.cmcaBankAccountList)
-  const {
-    loading: loadingBankAccount,
-    error: errorBankAccount,
-    cmcaBankAccounts
-  } = cmcaBankAccountList
+  const { loading: loadingBankAccount, cmcaBankAccounts } = cmcaBankAccountList
 
   useEffect(() => {
     dispatch(getRegionVillage())
@@ -35,14 +30,8 @@ const CmcaBankAccountListScreen = ({ match }) => {
     dispatch({ type: CMCA_BANK_ACCOUNT_LIST_RESET })
   }
 
-  const setError = () => {
-    dispatch(setAlert(errorRegion, 'danger'))
-    dispatch(setAlert(errorBankAccount, 'danger'))
-  }
-
   return (
     <Container>
-      {(errorRegion || errorBankAccount) && setError()}
       {loadingBankAccount || loadingRegion ? (
         <Loader />
       ) : (

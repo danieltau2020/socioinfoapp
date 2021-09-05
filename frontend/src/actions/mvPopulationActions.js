@@ -7,6 +7,7 @@ import {
   MV_POPULATION_2021_LIST_SUCCESS,
   MV_POPULATION_2021_LIST_FAIL
 } from '../constants/mvPopulationConstants'
+import { setAlert } from './alertActions'
 
 export const getMvPopulation2017 = () => async (dispatch) => {
   try {
@@ -21,6 +22,10 @@ export const getMvPopulation2017 = () => async (dispatch) => {
       payload: data
     })
   } catch (error) {
+    if (error) {
+      dispatch(setAlert(error.response.data.message, 'danger'))
+    }
+
     dispatch({
       type: MV_POPULATION_2017_LIST_FAIL,
       payload:
@@ -44,6 +49,10 @@ export const getMvPopulation2021 = () => async (dispatch) => {
       payload: data
     })
   } catch (error) {
+    if (error) {
+      dispatch(setAlert(error.response.data.message, 'danger'))
+    }
+
     dispatch({
       type: MV_POPULATION_2021_LIST_FAIL,
       payload:

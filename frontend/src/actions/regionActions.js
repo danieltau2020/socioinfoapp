@@ -4,6 +4,7 @@ import {
   REGION_LIST_SUCCESS,
   REGION_LIST_FAIL
 } from '../constants/regionConstants'
+import { setAlert } from './alertActions'
 
 export const getRegionVillage =
   (regionCode = '') =>
@@ -20,6 +21,10 @@ export const getRegionVillage =
         payload: data
       })
     } catch (error) {
+      if (error) {
+        dispatch(setAlert(error.response.data.message, 'danger'))
+      }
+
       dispatch({
         type: REGION_LIST_FAIL,
         payload:

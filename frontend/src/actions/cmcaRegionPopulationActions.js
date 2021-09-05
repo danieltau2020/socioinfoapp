@@ -7,6 +7,7 @@ import {
   CMCA_REGION_POPULATION_2021_LIST_SUCCESS,
   CMCA_REGION_POPULATION_2021_LIST_FAIL
 } from '../constants/cmcaRegionPopulationConstants'
+import { setAlert } from '../actions/alertActions'
 
 export const getCmcaRegionPopulation2017 = () => async (dispatch) => {
   try {
@@ -21,6 +22,10 @@ export const getCmcaRegionPopulation2017 = () => async (dispatch) => {
       payload: data
     })
   } catch (error) {
+    if (error) {
+      dispatch(setAlert(error.response.data.message, 'danger'))
+    }
+
     dispatch({
       type: CMCA_REGION_POPULATION_2017_LIST_FAIL,
       payload:
@@ -44,6 +49,10 @@ export const getCmcaRegionPopulation2021 = () => async (dispatch) => {
       payload: data
     })
   } catch (error) {
+    if (error) {
+      dispatch(setAlert(error.response.data.message, 'danger'))
+    }
+
     dispatch({
       type: CMCA_REGION_POPULATION_2021_LIST_FAIL,
       payload:

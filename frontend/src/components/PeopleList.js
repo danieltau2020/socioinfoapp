@@ -87,13 +87,11 @@ const PeopleList = ({
         </Col>
         <Col sm='6' md='6' className='text-end'>
           <p className='p-screen'>
-            {data.length < 1 ? (
-              'Loading...'
-            ) : rows.length < 1 ? (
-              'Nil records...'
-            ) : (
-              <div>{`${rows.length.toLocaleString()} Record(s)`}</div>
-            )}
+            {data.length < 1
+              ? 'Loading...'
+              : rows.length < 1
+              ? 'Nil records...'
+              : rows.length.toLocaleString() + ' Record(s)'}
           </p>
         </Col>
       </Row>

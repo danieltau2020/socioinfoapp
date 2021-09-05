@@ -4,6 +4,7 @@ import {
   MV_PERSON_LIST_SUCCESS,
   MV_PERSON_LIST_FAIL
 } from '../constants/mvPersonConstants'
+import { setAlert } from './alertActions'
 
 export const getAllMvPersons =
   (villageCode = '', year) =>
@@ -22,6 +23,10 @@ export const getAllMvPersons =
         payload: data
       })
     } catch (error) {
+      if (error) {
+        dispatch(setAlert(error.response.data.message, 'danger'))
+      }
+
       dispatch({
         type: MV_PERSON_LIST_FAIL,
         payload:

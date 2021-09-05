@@ -12,10 +12,12 @@ import CmcaRegionPopulationScreen from '../screens/CmcaRegionPopulationScreen'
 import MvPopulationScreen from '../screens/MvPopulationScreen'
 import NotFound from '../components/NotFound'
 import AlertMsg from '../components/AlertMsg'
+import AlertConnectionMsg from '../components/AlertConnectionMsg'
 
 const Routes = () => {
   return (
     <>
+      <AlertConnectionMsg />
       <AlertMsg />
       <main className='content-wrap'>
         <Switch>

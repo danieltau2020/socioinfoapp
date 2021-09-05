@@ -4,6 +4,7 @@ import {
   MV_KEY_STATS_SUCCESS,
   MV_KEY_STATS_FAIL
 } from '../constants/mvKeyStatsConstants.js'
+import { setAlert } from './alertActions.js'
 
 export const getMvKeyStats = () => async (dispatch) => {
   try {
@@ -18,6 +19,10 @@ export const getMvKeyStats = () => async (dispatch) => {
       payload: data
     })
   } catch (error) {
+    if (error) {
+      dispatch(setAlert(error.response.data.message, 'danger'))
+    }
+
     dispatch({
       type: MV_KEY_STATS_FAIL,
       payload:

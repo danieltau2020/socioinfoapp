@@ -5,7 +5,6 @@ import Loader from '../components/Loader'
 import { getMvBankAccounts } from '../actions/mvBankAccountActions'
 import { getRegionVillage } from '../actions/regionActions'
 import BankAccountList from '../components/BankAccountList'
-import { setAlert } from '../actions/alertActions'
 import { MV_BANK_ACCOUNT_LIST_RESET } from '../constants/mvBankAccountConstants'
 
 const MvBankAccountListScreen = ({ match }) => {
@@ -15,14 +14,10 @@ const MvBankAccountListScreen = ({ match }) => {
   const defaultVillage = '101'
 
   const regionList = useSelector((state) => state.regionList)
-  const { loading: loadingRegion, error: errorRegion, regions } = regionList
+  const { loading: loadingRegion, regions } = regionList
 
   const mvBankAccountList = useSelector((state) => state.mvBankAccountList)
-  const {
-    loading: loadingBankAccount,
-    error: errorBankAccount,
-    mvBankAccounts
-  } = mvBankAccountList
+  const { loading: loadingBankAccount, mvBankAccounts } = mvBankAccountList
 
   useEffect(() => {
     dispatch(getRegionVillage('1'))
@@ -35,14 +30,8 @@ const MvBankAccountListScreen = ({ match }) => {
     dispatch({ type: MV_BANK_ACCOUNT_LIST_RESET })
   }
 
-  const setError = () => {
-    dispatch(setAlert(errorRegion, 'danger'))
-    dispatch(setAlert(errorBankAccount, 'danger'))
-  }
-
   return (
     <Container>
-      {(errorRegion || errorBankAccount) && setError()}
       {loadingBankAccount || loadingRegion ? (
         <Loader />
       ) : (

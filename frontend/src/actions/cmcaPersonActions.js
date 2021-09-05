@@ -4,6 +4,7 @@ import {
   CMCA_PERSON_LIST_SUCCESS,
   CMCA_PERSON_LIST_FAIL
 } from '../constants/cmcaPersonConstants'
+import { setAlert } from './alertActions'
 
 export const getAllCmcaPersons =
   (villageCode = '', year) =>
@@ -22,6 +23,10 @@ export const getAllCmcaPersons =
         payload: data
       })
     } catch (error) {
+      if (error) {
+        dispatch(setAlert(error.response.data.message, 'danger'))
+      }
+
       dispatch({
         type: CMCA_PERSON_LIST_FAIL,
         payload:

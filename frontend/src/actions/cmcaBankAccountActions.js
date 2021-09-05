@@ -4,6 +4,7 @@ import {
   CMCA_BANK_ACCOUNT_LIST_SUCCESS,
   CMCA_BANK_ACCOUNT_LIST_FAIL
 } from '../constants/cmcaBankAccountConstants'
+import { setAlert } from './alertActions'
 
 export const getCmcaBankAccounts =
   (villageCode = '', year) =>
@@ -22,6 +23,10 @@ export const getCmcaBankAccounts =
         payload: data
       })
     } catch (error) {
+      if (error) {
+        dispatch(setAlert(error.response.data.message, 'danger'))
+      }
+
       dispatch({
         type: CMCA_BANK_ACCOUNT_LIST_FAIL,
         payload:

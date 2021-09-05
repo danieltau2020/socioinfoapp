@@ -36,6 +36,11 @@ const Header = () => {
             <Nav className='ms-auto align-items-center text-center'>
               {userInfo ? (
                 <>
+                  <LinkContainer to='/home'>
+                    <Nav.Link>
+                      <i className='fas fa-home'></i> Home
+                    </Nav.Link>
+                  </LinkContainer>
                   <NavDropdown
                     title={
                       <span>

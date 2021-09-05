@@ -4,17 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
-import { setAlert } from '../actions/alertActions'
-import { USER_LOGIN_FAIL } from '../constants/userConstants'
 
 const LoginScreen = ({ location, history }) => {
+  const dispatch = useDispatch()
+
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
-  const dispatch = useDispatch()
-
   const userLogin = useSelector((state) => state.userLogin)
-  const { loading, error, userInfo } = userLogin
+  const { loading, userInfo } = userLogin
 
   const redirect = location.search ? location.search.split('=')[1] : '/home'
 
@@ -22,19 +20,12 @@ const LoginScreen = ({ location, history }) => {
     if (userInfo) {
       history.push(redirect)
     }
-  }, [history, userInfo, redirect])
+  }, [dispatch, history, userInfo, redirect])
 
   const submitHandler = (e) => {
     e.preventDefault()
     dispatch(login(userName, password))
   }
-
-  const setError = () => {
-    dispatch(setAlert(error, 'danger'))
-    dispatch({ type: USER_LOGIN_FAIL })
-  }
-
-  if (error) return setError()
 
   return (
     <Container className='d-flex align-items-center'>
@@ -61,7 +52,11 @@ const LoginScreen = ({ location, history }) => {
             ></Form.Control>
           </Form.Group>
           <div className='d-grid'>
-            <Button type='submit' className='mt-3 btn-primary'>
+            <Button
+              type='submit'
+              disabled={loading || !navigator.onLine}
+              className='mt-3 btn-primary'
+            >
               Sign In
             </Button>
           </div>

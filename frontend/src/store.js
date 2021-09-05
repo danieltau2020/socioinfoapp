@@ -1,7 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { alertReducer } from './reducers/alertReducers'
+import {
+  alertReducer,
+  alertConnectionErrorReducer
+} from './reducers/alertReducers'
 import { userLoginReducer } from './reducers/userReducers'
 import { cmcaPersonListReducer } from './reducers/cmcaPersonReducers'
 import { cmcaBankAccountListReducer } from './reducers/cmcaBankAccountReducers'
@@ -21,6 +24,7 @@ import {
 
 const reducer = combineReducers({
   alerts: alertReducer,
+  alertConnection: alertConnectionErrorReducer,
   userLogin: userLoginReducer,
   cmcaPersonList: cmcaPersonListReducer,
   cmcaBankAccountList: cmcaBankAccountListReducer,

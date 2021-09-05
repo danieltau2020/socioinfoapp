@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import { setAlert } from '../actions/alertActions'
 import MvPopulationStats from '../components/MvPopulationStats'
 import {
   getMvPopulation2017,
@@ -20,30 +19,16 @@ const MvPopulationScreen = () => {
     (state) => state.mvPopulation2021List
   )
 
-  const {
-    loading: loadingMvPopulation2017,
-    error: errorMvPopulation2017,
-    mvPopulation2017
-  } = mvPopulation2017List
+  const { loading: loadingMvPopulation2017, mvPopulation2017 } =
+    mvPopulation2017List
 
-  const {
-    loading: loadingMvPopulation2021,
-    error: errorMvPopulation2021,
-    mvPopulation2021
-  } = mvPopulation2021List
+  const { loading: loadingMvPopulation2021, mvPopulation2021 } =
+    mvPopulation2021List
 
   useEffect(() => {
     dispatch(getMvPopulation2017())
     dispatch(getMvPopulation2021())
   }, [dispatch])
-
-  const setErrorMv2017 = () => {
-    dispatch(setAlert(errorMvPopulation2017, 'danger'))
-  }
-
-  const setErrorMv2021 = () => {
-    dispatch(setAlert(errorMvPopulation2021, 'danger'))
-  }
 
   return (
     <Container>
@@ -55,7 +40,6 @@ const MvPopulationScreen = () => {
           </h4>
         </Col>
       </Row>
-      {errorMvPopulation2017 && setErrorMv2017()}
 
       {loadingMvPopulation2017 ? (
         <Loader />
@@ -63,7 +47,6 @@ const MvPopulationScreen = () => {
         <MvPopulationStats mvPopulation={mvPopulation2017} year={'2017'} />
       )}
 
-      {errorMvPopulation2021 && setErrorMv2021()}
       {loadingMvPopulation2021 ? (
         <Loader />
       ) : (

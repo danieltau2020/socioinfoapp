@@ -22,6 +22,7 @@ export const cmcaKeyStatsReducer = (
     case CMCA_KEY_STATS_FAIL:
       return {
         loading: false,
+        cmcaKeyStats: [],
         error: action.payload
       }
     default:

@@ -120,6 +120,15 @@
     font-size: 14px;
   }
 
+  .app-styleguide
+    .navbar-light
+    .dropdown
+    .dropdown-menu
+    .paymentsNav
+    .dropdown-header {
+    font-size: 14px;
+  }
+
   .app-styleguide .title-label {
     font-size: 14px;
   }
@@ -200,3 +209,15 @@
     flex: -1 0 30%;
   }
 }
+
+/* @media only screen and (max-width: 1199px) {
+  .app-styleguide .navbar-light .navbar-text {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .app-styleguide .navbar-light .navbar-text {
+    display: unset;
+  }
+} */

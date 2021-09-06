@@ -8,6 +8,11 @@ import MvPopulation2021 from '../models/mvPopulation2021Model.js'
 const getMvPopulation2017 = asynchandler(async (req, res) => {
   const mvPopulation2017 = await MvPopulation2017.find({})
 
+  if (!mvPopulation2017) {
+    res.status(401)
+    throw new Error('Error occured. Please try again.')
+  }
+
   res.status(200).json(mvPopulation2017)
 })
 
@@ -16,6 +21,12 @@ const getMvPopulation2017 = asynchandler(async (req, res) => {
 // @access  Private
 const getMvPopulation2021 = asynchandler(async (req, res) => {
   const mvPopulation2021 = await MvPopulation2021.find({})
+
+  if (!mvPopulation2021) {
+    res.status(401)
+    throw new Error('Error occured. Please try again.')
+  }
+
   res.status(200).json(mvPopulation2021)
 })
 

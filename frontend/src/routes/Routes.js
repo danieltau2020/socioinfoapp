@@ -10,14 +10,15 @@ import MvPersonListScreen from '../screens/MvPersonListScreen'
 import MvBankAccountListScreen from '../screens/MvBankAccountListScreen'
 import CmcaRegionPopulationScreen from '../screens/CmcaRegionPopulationScreen'
 import MvPopulationScreen from '../screens/MvPopulationScreen'
+import CmcaBankTypesScreen from '../screens/CmcaBankTypesScreen'
+import MvBankTypesScreen from '../screens/MvBankTypesScreen'
+import CmcaPaymentsListScreen from '../screens/CmcaPaymentsListScreen'
 import NotFound from '../components/NotFound'
 import AlertMsg from '../components/AlertMsg'
-import AlertConnectionMsg from '../components/AlertConnectionMsg'
 
 const Routes = () => {
   return (
     <>
-      <AlertConnectionMsg />
       <AlertMsg />
       <main className='content-wrap'>
         <Switch>
@@ -52,6 +53,21 @@ const Routes = () => {
             exact
             path='/statistics/population/mv'
             component={MvPopulationScreen}
+          />
+          <PrivateRoute
+            exact
+            path='/statistics/bankaccounts/cmca'
+            component={CmcaBankTypesScreen}
+          />
+          <PrivateRoute
+            exact
+            path='/statistics/bankaccounts/mv'
+            component={MvBankTypesScreen}
+          />
+          <PrivateRoute
+            exact
+            path='/payments/cmca/:year/:pmtBatch'
+            component={CmcaPaymentsListScreen}
           />
           <Route component={NotFound} />
         </Switch>

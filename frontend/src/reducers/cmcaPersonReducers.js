@@ -23,6 +23,7 @@ export const cmcaPersonListReducer = (
     case CMCA_PERSON_LIST_FAIL:
       return {
         loading: false,
+        cmcaPersons: [],
         error: action.payload
       }
     case CMCA_PERSON_LIST_RESET:

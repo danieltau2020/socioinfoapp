@@ -14,10 +14,14 @@ const MvBankAccountListScreen = ({ match }) => {
   const defaultVillage = '101'
 
   const regionList = useSelector((state) => state.regionList)
-  const { loading: loadingRegion, regions } = regionList
+  const { loading: loadingRegion, error: errorRegion, regions } = regionList
 
   const mvBankAccountList = useSelector((state) => state.mvBankAccountList)
-  const { loading: loadingBankAccount, mvBankAccounts } = mvBankAccountList
+  const {
+    loading: loadingBankAccount,
+    error: errorMvBankAccounts,
+    mvBankAccounts
+  } = mvBankAccountList
 
   useEffect(() => {
     dispatch(getRegionVillage('1'))
@@ -28,6 +32,10 @@ const MvBankAccountListScreen = ({ match }) => {
   const villageSelected = (e) => {
     dispatch(getMvBankAccounts(e.target.value, match.params.year))
     dispatch({ type: MV_BANK_ACCOUNT_LIST_RESET })
+  }
+
+  if (errorRegion || errorMvBankAccounts) {
+    return null
   }
 
   return (

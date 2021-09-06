@@ -22,6 +22,7 @@ export const userLoginReducer = (
     case USER_LOGIN_FAIL:
       return {
         loading: false,
+        // userInfo: {},
         error: action.payload,
         isAuthenticated: false
       }

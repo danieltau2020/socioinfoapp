@@ -11,15 +11,27 @@ const HomeScreen = () => {
   const dispatch = useDispatch()
 
   const cmcaKeyStatList = useSelector((state) => state.cmcaKeyStatList)
-  const { loading: loadingCmcaKeyStats, cmcaKeyStats } = cmcaKeyStatList
+  const {
+    loading: loadingCmcaKeyStats,
+    error: errorCmcaKeyStats,
+    cmcaKeyStats
+  } = cmcaKeyStatList
 
   const mvKeyStatList = useSelector((state) => state.mvKeyStatList)
-  const { loading: loadingMvKeyStats, mvKeyStats } = mvKeyStatList
+  const {
+    loading: loadingMvKeyStats,
+    error: errorMvKeyStats,
+    mvKeyStats
+  } = mvKeyStatList
 
   useEffect(() => {
     dispatch(getCmcaKeyStats())
     dispatch(getMvKeyStats())
   }, [dispatch])
+
+  if (errorCmcaKeyStats || errorMvKeyStats) {
+    return null
+  }
 
   return (
     <Container>

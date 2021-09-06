@@ -15,7 +15,7 @@ export const getCmcaRegionPopulation2017 = () => async (dispatch) => {
       type: CMCA_REGION_POPULATION_2017_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/cmca/2017')
+    const { data } = await axios.get('/api/statistics/population/cmca/2017')
 
     dispatch({
       type: CMCA_REGION_POPULATION_2017_LIST_SUCCESS,
@@ -42,7 +42,7 @@ export const getCmcaRegionPopulation2021 = () => async (dispatch) => {
       type: CMCA_REGION_POPULATION_2021_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/cmca/2021')
+    const { data } = await axios.get('/api/statistics/population/cmca/2021')
 
     dispatch({
       type: CMCA_REGION_POPULATION_2021_LIST_SUCCESS,

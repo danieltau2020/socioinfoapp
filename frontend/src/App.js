@@ -10,11 +10,6 @@ const App = () => {
         <Header />
         <Switch>
           <Route exact path='/' component={LandingScreen} />
-          {/* {!userInfo ? (
-            <Route exact path='/' component={LandingScreen} />
-          ) : (
-            <Redirect to='/home' />
-          )} */}
           <Route component={Routes} />
         </Switch>
       </div>

@@ -56,7 +56,7 @@ const CmcaKeyStats = ({ cmcaKeyStats }) => {
                 <Card className='text-center align-items-center'>
                   <Card.Body>
                     <h1 className='card-h1'>
-                      <i className='fas fa-money-check-alt'></i>
+                      <i className='fas fa-coins'></i>
                     </h1>
                     <Card.Title>Bank Accounts</Card.Title>
                     <Card.Text className='m-0'>
@@ -76,7 +76,7 @@ const CmcaKeyStats = ({ cmcaKeyStats }) => {
                 <Card className='text-center align-items-center'>
                   <Card.Body>
                     <h1 className='card-h1'>
-                      <i className='fas fa-money-check-alt'></i>
+                      <i className='fas fa-coins'></i>
                     </h1>
                     <Card.Title>Bank Accounts</Card.Title>
                     <Card.Text className='m-0'>

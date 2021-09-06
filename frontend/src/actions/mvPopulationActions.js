@@ -15,7 +15,7 @@ export const getMvPopulation2017 = () => async (dispatch) => {
       type: MV_POPULATION_2017_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/mv/2017')
+    const { data } = await axios.get('/api/statistics/population/mv/2017')
 
     dispatch({
       type: MV_POPULATION_2017_LIST_SUCCESS,
@@ -42,7 +42,7 @@ export const getMvPopulation2021 = () => async (dispatch) => {
       type: MV_POPULATION_2021_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/mv/2021')
+    const { data } = await axios.get('/api/statistics/population/mv/2021')
 
     dispatch({
       type: MV_POPULATION_2021_LIST_SUCCESS,

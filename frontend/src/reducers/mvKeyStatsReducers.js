@@ -22,6 +22,7 @@ export const mvKeyStatsReducer = (
     case MV_KEY_STATS_FAIL:
       return {
         loading: false,
+        mvKeyStats: [],
         error: action.payload
       }
     default:

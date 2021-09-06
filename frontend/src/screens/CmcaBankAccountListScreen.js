@@ -14,10 +14,14 @@ const CmcaBankAccountListScreen = ({ match }) => {
   const defaultVillage = '201'
 
   const regionList = useSelector((state) => state.regionList)
-  const { loading: loadingRegion, regions } = regionList
+  const { loading: loadingRegion, error: errorRegions, regions } = regionList
 
   const cmcaBankAccountList = useSelector((state) => state.cmcaBankAccountList)
-  const { loading: loadingBankAccount, cmcaBankAccounts } = cmcaBankAccountList
+  const {
+    loading: loadingBankAccount,
+    error: errorCmcaBankAccounts,
+    cmcaBankAccounts
+  } = cmcaBankAccountList
 
   useEffect(() => {
     dispatch(getRegionVillage())
@@ -28,6 +32,10 @@ const CmcaBankAccountListScreen = ({ match }) => {
   const villageSelected = (e) => {
     dispatch(getCmcaBankAccounts(e.target.value, match.params.year))
     dispatch({ type: CMCA_BANK_ACCOUNT_LIST_RESET })
+  }
+
+  if (errorRegions || errorCmcaBankAccounts) {
+    return null
   }
 
   return (

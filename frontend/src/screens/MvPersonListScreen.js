@@ -14,10 +14,14 @@ const MvPersonListScreen = ({ match }) => {
   const defaultVillage = '101'
 
   const regionList = useSelector((state) => state.regionList)
-  const { loading: loadingRegion, regions } = regionList
+  const { loading: loadingRegion, error: errorRegion, regions } = regionList
 
   const mvPersonList = useSelector((state) => state.mvPersonList)
-  const { loading: loadingPerson, mvPersons } = mvPersonList
+  const {
+    loading: loadingPerson,
+    error: errorMvPerson,
+    mvPersons
+  } = mvPersonList
 
   useEffect(() => {
     dispatch(getRegionVillage('1'))
@@ -28,6 +32,10 @@ const MvPersonListScreen = ({ match }) => {
   const villageSelected = (e) => {
     dispatch(getAllMvPersons(e.target.value, match.params.year))
     dispatch({ type: MV_PERSON_LIST_RESET })
+  }
+
+  if (errorRegion || errorMvPerson) {
+    return null
   }
 
   return (

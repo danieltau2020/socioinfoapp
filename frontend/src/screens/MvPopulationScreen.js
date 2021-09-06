@@ -19,16 +19,26 @@ const MvPopulationScreen = () => {
     (state) => state.mvPopulation2021List
   )
 
-  const { loading: loadingMvPopulation2017, mvPopulation2017 } =
-    mvPopulation2017List
+  const {
+    loading: loadingMvPopulation2017,
+    error: errorMvPopulation2017,
+    mvPopulation2017
+  } = mvPopulation2017List
 
-  const { loading: loadingMvPopulation2021, mvPopulation2021 } =
-    mvPopulation2021List
+  const {
+    loading: loadingMvPopulation2021,
+    error: errorMvPopulation2021,
+    mvPopulation2021
+  } = mvPopulation2021List
 
   useEffect(() => {
     dispatch(getMvPopulation2017())
     dispatch(getMvPopulation2021())
   }, [dispatch])
+
+  if (errorMvPopulation2017 || errorMvPopulation2021) {
+    return null
+  }
 
   return (
     <Container>

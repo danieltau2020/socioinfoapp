@@ -38,6 +38,7 @@ export const login = (userName, password) => async (dispatch) => {
     }
 
     sessionStorage.removeItem('userInfo')
+
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:

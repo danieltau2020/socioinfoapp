@@ -19,6 +19,7 @@ export const regionListReducer = (state = { regions: [] }, action) => {
     case REGION_LIST_FAIL:
       return {
         loading: false,
+        regions: [],
         error: action.payload
       }
     default:

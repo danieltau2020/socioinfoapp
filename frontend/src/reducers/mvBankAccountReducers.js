@@ -23,6 +23,7 @@ export const mvBankAccountListReducer = (
     case MV_BANK_ACCOUNT_LIST_FAIL:
       return {
         loading: false,
+        mvBankAccounts: [],
         error: action.payload
       }
     case MV_BANK_ACCOUNT_LIST_RESET:

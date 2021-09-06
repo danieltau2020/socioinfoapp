@@ -14,10 +14,14 @@ const CmcaPersonListScreen = ({ match }) => {
   const defaultVillage = '201'
 
   const regionList = useSelector((state) => state.regionList)
-  const { loading: loadingRegion, regions } = regionList
+  const { loading: loadingRegion, error: errorRegions, regions } = regionList
 
   const cmcaPersonList = useSelector((state) => state.cmcaPersonList)
-  const { loading: loadingPerson, cmcaPersons } = cmcaPersonList
+  const {
+    loading: loadingPerson,
+    error: errorCmcaPersons,
+    cmcaPersons
+  } = cmcaPersonList
 
   useEffect(() => {
     dispatch(getRegionVillage())
@@ -28,6 +32,10 @@ const CmcaPersonListScreen = ({ match }) => {
   const villageSelected = (e) => {
     dispatch(getAllCmcaPersons(e.target.value, match.params.year))
     dispatch({ type: CMCA_PERSON_LIST_RESET })
+  }
+
+  if (errorRegions || errorCmcaPersons) {
+    return null
   }
 
   return (

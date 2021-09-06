@@ -27,6 +27,7 @@ export const mvPopulation2017ListReducer = (
     case MV_POPULATION_2017_LIST_FAIL:
       return {
         loading: false,
+        mvPopulation2017: [],
         error: action.payload
       }
     case MV_POPULATION_2017_LIST_RESET:
@@ -56,6 +57,7 @@ export const mvPopulation2021ListReducer = (
     case MV_POPULATION_2021_LIST_FAIL:
       return {
         loading: false,
+        mvPopulation2021: [],
         error: action.payload
       }
     case MV_POPULATION_2021_LIST_RESET:

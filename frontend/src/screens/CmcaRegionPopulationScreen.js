@@ -19,23 +19,34 @@ const CmcaRegionPopulationScreen = () => {
     (state) => state.cmcaRegionPopulation2021List
   )
 
-  const { loading: loadingCmcaRegionPopulation2017, cmcaRegionPopulation2017 } =
-    cmcaRegionPopulation2017List
+  const {
+    loading: loadingCmcaRegionPopulation2017,
+    error: errorCmcaRegionPopulation2017,
+    cmcaRegionPopulation2017
+  } = cmcaRegionPopulation2017List
 
-  const { loading: loadingCmcaRegionPopulation2021, cmcaRegionPopulation2021 } =
-    cmcaRegionPopulation2021List
+  const {
+    loading: loadingCmcaRegionPopulation2021,
+    error: errorCmcaRegionPopulation2021,
+    cmcaRegionPopulation2021
+  } = cmcaRegionPopulation2021List
 
   useEffect(() => {
     dispatch(getCmcaRegionPopulation2017())
     dispatch(getCmcaRegionPopulation2021())
   }, [dispatch])
 
+  if (errorCmcaRegionPopulation2017 || errorCmcaRegionPopulation2021) {
+    return null
+  }
+
   return (
     <Container>
       <Row>
         <Col sm>
           <h4 className='h4-screen'>
-            <i className='fas fa-chart-line'></i> CMCA Region Population Summary
+            <i className='fas fa-chart-line'></i> CMCA Regions Population
+            Summary
           </h4>
         </Col>
       </Row>

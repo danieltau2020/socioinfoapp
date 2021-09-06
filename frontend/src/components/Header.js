@@ -1,7 +1,15 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap'
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Dropdown,
+  Container,
+  Row,
+  Col
+} from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { logout } from '../actions/userActions'
 
@@ -20,8 +28,8 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar collapseOnSelect expand='lg'>
-        <Container>
+      <Navbar collapseOnSelect expand='lg' className='mx-5'>
+        <>
           {userInfo ? (
             <LinkContainer to='/home'>
               <Navbar.Brand>SInfo</Navbar.Brand>
@@ -44,54 +52,96 @@ const Header = () => {
                   <NavDropdown
                     title={
                       <span>
-                        <i className='fas fa-users'></i> People
+                        <i className='fas fa-users'></i> Population
                       </span>
                     }
-                    id='peoplemenu'
+                    id='basic-nav-dropdown'
                     renderMenuOnMount={true}
                   >
-                    <LinkContainer to={`/people/cmca/${'2017'}/dataset`}>
-                      <NavDropdown.Item>CMCA 2017 Dataset</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to={`/people/cmca/${'2021'}/dataset`}>
-                      <NavDropdown.Item>CMCA 2021 Dataset</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to={`/people/mv/${'2017'}/dataset`}>
-                      <NavDropdown.Item>
-                        Mine Villages 2017 Dataset
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to={`/people/mv/${'2021'}/dataset`}>
-                      <NavDropdown.Item>
-                        Mine Villages 2021 Dataset
-                      </NavDropdown.Item>
-                    </LinkContainer>
+                    <Container className='dropdownNav'>
+                      <Row>
+                        <Col sm='12' md='12' className='text-left'>
+                          <Dropdown.Header>CMCA</Dropdown.Header>
+                          <LinkContainer to={`/people/cmca/${'2017'}/dataset`}>
+                            <NavDropdown.Item>
+                              CMCA 2017 Population
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer to={`/people/cmca/${'2021'}/dataset`}>
+                            <NavDropdown.Item>
+                              CMCA 2021 Population
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                        </Col>
+                      </Row>
+                      <NavDropdown.Divider />
+                      <Row>
+                        <Col sm='12' md='12' className='text-left'>
+                          <Dropdown.Header>Mine Villages</Dropdown.Header>
+                          <LinkContainer to={`/people/mv/${'2017'}/dataset`}>
+                            <NavDropdown.Item>
+                              Mine Villages 2017 Population
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer to={`/people/mv/${'2021'}/dataset`}>
+                            <NavDropdown.Item>
+                              Mine Villages 2021 Population
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                        </Col>
+                      </Row>
+                    </Container>
                   </NavDropdown>
                   <NavDropdown
                     title={
                       <span>
-                        <i className='fas fa-money-check-alt'></i> Bank Account
+                        <i className='fas fa-coins'></i> Bank Accounts
                       </span>
                     }
-                    id='bankaccountmenu'
+                    id='basic-nav-dropdown'
                     renderMenuOnMount={true}
                   >
-                    <LinkContainer to={`/bankaccount/cmca/${'2017'}/dataset`}>
-                      <NavDropdown.Item>CMCA 2017 Dataset</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to={`/bankaccount/cmca/${'2021'}/dataset`}>
-                      <NavDropdown.Item>CMCA 2021 Dataset</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to={`/bankaccount/mv/${'2017'}/dataset`}>
-                      <NavDropdown.Item>
-                        Mine Villages 2017 Dataset
-                      </NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to={`/bankaccount/mv/${'2021'}/dataset`}>
-                      <NavDropdown.Item>
-                        Mine Villages 2021 Dataset
-                      </NavDropdown.Item>
-                    </LinkContainer>
+                    <Container className='dropdownNav'>
+                      <Row>
+                        <Col sm='12' md='12' className='text-left'>
+                          <Dropdown.Header>CMCA</Dropdown.Header>
+                          <LinkContainer
+                            to={`/bankaccount/cmca/${'2017'}/dataset`}
+                          >
+                            <NavDropdown.Item>
+                              CMCA 2017 Bank Accounts
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer
+                            to={`/bankaccount/cmca/${'2021'}/dataset`}
+                          >
+                            <NavDropdown.Item>
+                              CMCA 2021 Bank Accounts
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                        </Col>
+                      </Row>
+                      <NavDropdown.Divider />
+                      <Row>
+                        <Col sm='12' md='12' className='text-left'>
+                          <Dropdown.Header>Mine Villages</Dropdown.Header>
+                          <LinkContainer
+                            to={`/bankaccount/mv/${'2017'}/dataset`}
+                          >
+                            <NavDropdown.Item>
+                              Mine Villages 2017 Bank Accounts
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer
+                            to={`/bankaccount/mv/${'2021'}/dataset`}
+                          >
+                            <NavDropdown.Item>
+                              Mine Villages 2021 Bank Accounts
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                        </Col>
+                      </Row>
+                    </Container>
                   </NavDropdown>
                   <NavDropdown
                     title={
@@ -99,17 +149,66 @@ const Header = () => {
                         <i className='fas fa-chart-line'></i> Statistics
                       </span>
                     }
-                    id='statisticsmenu'
+                    id='basic-nav-dropdown'
                     renderMenuOnMount={true}
                   >
-                    <LinkContainer to='/statistics/population/cmca'>
-                      <NavDropdown.Item>CMCA Population Stats</NavDropdown.Item>
-                    </LinkContainer>
-                    <LinkContainer to='/statistics/population/mv'>
-                      <NavDropdown.Item>
-                        Mine Villages Population Stats
-                      </NavDropdown.Item>
-                    </LinkContainer>
+                    <Container className='dropdownNav'>
+                      <Row>
+                        <Col sm='12' md='12' className='text-left'>
+                          <Dropdown.Header>CMCA</Dropdown.Header>
+                          <LinkContainer to='/statistics/population/cmca'>
+                            <NavDropdown.Item>CMCA Population</NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer to='/statistics/bankaccounts/cmca'>
+                            <NavDropdown.Item>
+                              CMCA Bank Accounts
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                        </Col>
+                      </Row>
+                      <NavDropdown.Divider />
+                      <Row>
+                        <Col sm='12' md='12' className='text-left'>
+                          <Dropdown.Header>Mine Villages</Dropdown.Header>
+                          <LinkContainer to='/statistics/population/mv'>
+                            <NavDropdown.Item>
+                              Mine Villages Population
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer to='/statistics/bankaccounts/mv'>
+                            <NavDropdown.Item>
+                              Mine Villages Bank Accounts
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                        </Col>
+                      </Row>
+                    </Container>
+                  </NavDropdown>
+                  <NavDropdown
+                    title={
+                      <span>
+                        <i className='fas fa-money-check-alt'></i> Payments
+                      </span>
+                    }
+                    id='basic-nav-dropdown'
+                    renderMenuOnMount={true}
+                  >
+                    <Container className='dropdownNav'>
+                      <Row>
+                        <Col sm='12' md='12' className='text-left'>
+                          <Dropdown.Header>CMCA 2021</Dropdown.Header>
+                          <LinkContainer to={`/payments/cmca/${2021}/${'1'}`}>
+                            <NavDropdown.Item>Batch 1</NavDropdown.Item>
+                          </LinkContainer>
+                        </Col>
+                      </Row>
+                      <NavDropdown.Divider />
+                      <Row>
+                        <Col sm='12' md='12' className='text-left'>
+                          <Dropdown.Header>Mine Villages 2021</Dropdown.Header>
+                        </Col>
+                      </Row>
+                    </Container>
                   </NavDropdown>
                   <LinkContainer to='#' className='ms-5'>
                     <Nav.Link onClick={logoutHandler}>
@@ -129,7 +228,7 @@ const Header = () => {
               )}
             </Nav>
           </Navbar.Collapse>
-        </Container>
+        </>
       </Navbar>
     </header>
   )

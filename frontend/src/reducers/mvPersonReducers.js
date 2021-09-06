@@ -23,6 +23,7 @@ export const mvPersonListReducer = (
     case MV_PERSON_LIST_FAIL:
       return {
         loading: false,
+        mvPersons: [],
         error: action.payload
       }
     case MV_PERSON_LIST_RESET:

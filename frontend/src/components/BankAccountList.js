@@ -27,7 +27,8 @@ const BankAccountList = ({
       { Header: 'HH', accessor: 'household' },
       { Header: 'Account Name', accessor: 'accountName' },
       { Header: 'Account Number', accessor: 'accountNumber' },
-      { Header: 'Bank', accessor: 'bank' }
+      { Header: 'Bank', accessor: 'bank' },
+      { Header: 'Account Status', accessor: 'accountStatus' }
     ],
     []
   )
@@ -71,7 +72,7 @@ const BankAccountList = ({
       <Row>
         <Col sm>
           <h4 className='h4-screen'>
-            <i className='fas fa-money-check-alt'></i> Bank Account
+            <i className='fas fa-coins'></i> Bank Account
           </h4>
         </Col>
       </Row>

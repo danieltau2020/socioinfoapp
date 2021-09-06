@@ -44,6 +44,10 @@ const BankAccountSchema = new Schema(
     bank: {
       type: String,
       trim: true
+    },
+    accountStatus: {
+      type: String,
+      trim: true
     }
   },
   { timestamps: true }

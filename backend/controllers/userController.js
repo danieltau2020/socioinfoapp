@@ -51,6 +51,11 @@ const loginUser = asyncHandler(async (req, res) => {
   // Find user
   const user = await User.findOne({ userName })
 
+  if (!user) {
+    res.status(401)
+    throw new Error('Error occured. Please try again.')
+  }
+
   // Match user and password
   if (user && (await user.matchPassword(password))) {
     // res.status(200).json({

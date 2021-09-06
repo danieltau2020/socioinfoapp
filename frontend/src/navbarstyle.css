@@ -51,3 +51,18 @@
 .app-styleguide .navbar-light .dropdown:hover .dropdown-menu {
   display: block !important;
 }
+
+.app-styleguide .navbar-light .dropdown .dropdown-menu .dropdownNav {
+  width: max-content;
+}
+
+.app-styleguide
+  .navbar-light
+  .dropdown
+  .dropdown-menu
+  .dropdownNav
+  .dropdown-header {
+  font-size: inherit;
+  font-weight: bold;
+  color: var(--primary-color);
+}

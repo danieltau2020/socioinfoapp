@@ -1,10 +1,16 @@
 import React, { useMemo } from 'react'
 import { Container, Row, Col, Button, Form, Table } from 'react-bootstrap'
-import { useTable, useGlobalFilter, usePagination } from 'react-table'
-import GlobalFilter from '../components/GlobalFilter'
-import VillageDropDown from '../components/VillageDropDown'
+import {
+  useTable,
+  useGlobalFilter,
+  usePagination,
+  useRowSelect
+} from 'react-table'
+import { useHistory } from 'react-router-dom'
+import GlobalFilter from './GlobalFilter'
+import VillageDropDown from './VillageDropDown'
 
-const PeopleList = ({
+const CmcaPeopleList = ({
   persons,
   regions,
   villageSelected,
@@ -12,9 +18,14 @@ const PeopleList = ({
   year,
   defaultVillage
 }) => {
+  const history = useHistory()
+
   const columns = useMemo(
     () => [
-      { Header: 'Id', accessor: '_id' },
+      {
+        Header: 'Id',
+        accessor: '_id'
+      },
       {
         Header: '#',
         id: 'row',
@@ -36,6 +47,7 @@ const PeopleList = ({
 
   const personTable = useTable(
     {
+      // autoResetSelectedRows: false,
       columns,
       data,
       initialState: {
@@ -43,7 +55,8 @@ const PeopleList = ({
       }
     },
     useGlobalFilter,
-    usePagination
+    usePagination,
+    useRowSelect
   )
 
   const {
@@ -52,6 +65,7 @@ const PeopleList = ({
     headerGroups,
     page,
     rows,
+    toggleAllRowsSelected,
     nextPage,
     previousPage,
     prepareRow,
@@ -66,6 +80,13 @@ const PeopleList = ({
   } = personTable
 
   const { globalFilter, pageIndex, pageSize } = state
+
+  const handleRowClick = (row) => {
+    const { regionCode, villageCode, dwelling, household } = row.original
+    history.push(
+      `/familylist/cmca/${year}/${regionCode}/${villageCode}/${dwelling}/${household}`
+    )
+  }
 
   return (
     <Container>
@@ -112,7 +133,7 @@ const PeopleList = ({
         striped
         hover
         size='sm'
-        className='mt-3'
+        className='mt-3 selectable'
         {...getTableProps()}
       >
         <thead>
@@ -128,7 +149,18 @@ const PeopleList = ({
           {page.map((row) => {
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                {...row.getRowProps({
+                  style: {
+                    backgroundColor: row.isSelected ? '#ffd1b3' : ''
+                  },
+                  onClick: (e) => {
+                    toggleAllRowsSelected(false)
+                    row.toggleRowSelected()
+                    handleRowClick(row)
+                  }
+                })}
+              >
                 {row.cells.map((cell) => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
@@ -205,4 +237,4 @@ const PeopleList = ({
   )
 }
 
-export default PeopleList
+export default CmcaPeopleList

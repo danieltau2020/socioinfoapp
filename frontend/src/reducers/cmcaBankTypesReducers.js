@@ -27,7 +27,6 @@ export const cmcaBankTypes2017ListReducer = (
     case CMCA_BANK_TYPES_2017_LIST_FAIL:
       return {
         loading: false,
-        cmcaBankTypes2017: [],
         error: action.payload
       }
     case CMCA_BANK_TYPES_2017_LIST_RESET:
@@ -57,7 +56,6 @@ export const cmcaBankTypes2021ListReducer = (
     case CMCA_BANK_TYPES_2021_LIST_FAIL:
       return {
         loading: false,
-        cmcaBankTypes: [],
         error: action.payload
       }
     case CMCA_BANK_TYPES_2021_LIST_RESET:

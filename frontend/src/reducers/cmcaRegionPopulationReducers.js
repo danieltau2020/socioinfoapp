@@ -27,7 +27,6 @@ export const cmcaRegionPopulation2017ListReducer = (
     case CMCA_REGION_POPULATION_2017_LIST_FAIL:
       return {
         loading: false,
-        cmcaRegionPopulation2017: [],
         error: action.payload
       }
     case CMCA_REGION_POPULATION_2017_LIST_RESET:
@@ -57,7 +56,6 @@ export const cmcaRegionPopulation2021ListReducer = (
     case CMCA_REGION_POPULATION_2021_LIST_FAIL:
       return {
         loading: false,
-        cmcaRegionPopulation2021: [],
         error: action.payload
       }
     case CMCA_REGION_POPULATION_2021_LIST_RESET:

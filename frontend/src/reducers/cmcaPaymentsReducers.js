@@ -23,7 +23,6 @@ export const cmcaPaymentsReducer = (
     case CMCA_PAYMENTS_FAIL:
       return {
         loading: false,
-        cmcaPayments: [],
         error: action.payload
       }
     case CMCA_PAYMENTS_RESET:

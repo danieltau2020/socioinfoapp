@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import PeopleList from '../components/PeopleList'
+import MvPeopleList from '../components/MvPeopleList'
 import { getAllMvPersons } from '../actions/mvPersonActions'
 import { getRegionVillage } from '../actions/regionActions'
 import { MV_PERSON_LIST_RESET } from '../constants/mvPersonConstants'
@@ -43,7 +43,7 @@ const MvPersonListScreen = ({ match }) => {
       {loadingPerson || loadingRegion ? (
         <Loader />
       ) : (
-        <PeopleList
+        <MvPeopleList
           persons={mvPersons}
           regions={regions}
           villageSelected={villageSelected}

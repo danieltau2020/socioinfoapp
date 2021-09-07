@@ -11,7 +11,7 @@ const getMvPersons = asynchandler(async (req, res) => {
   const year = req.query.year
 
   if (!year) {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 
@@ -20,7 +20,7 @@ const getMvPersons = asynchandler(async (req, res) => {
       const persons = await MvPerson2017.find({ villageCode })
 
       if (!persons) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
@@ -29,7 +29,7 @@ const getMvPersons = asynchandler(async (req, res) => {
       const persons = await MvPerson2017.find({})
 
       if (!persons) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
@@ -40,7 +40,7 @@ const getMvPersons = asynchandler(async (req, res) => {
       const persons = await MvPerson2021.find({ villageCode })
 
       if (!persons) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
@@ -49,43 +49,15 @@ const getMvPersons = asynchandler(async (req, res) => {
       const persons = await MvPerson2021.find({})
 
       if (!persons) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
       res.status(200).json(persons)
     }
   } else {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 })
 
-// @desc    Update village id
-// @route   GET /api/person/updatevillageid
-// @access  Public
-const updateVillageObjectId = asynchandler(async (req, res) => {
-  let persons = await Person.find({}).lean()
-  const villages = await Village.find({})
-
-  persons = persons.map((pers) => {
-    return {
-      ...pers,
-      village: villages.find((vill) => vill.villageCode === pers.villageCode)
-        ._id
-    }
-  })
-
-  await Person.bulkWrite(
-    persons.map((pers) => ({
-      updateOne: {
-        filter: { _id: pers._id },
-        update: pers,
-        upsert: true
-      }
-    }))
-  )
-
-  res.json(persons)
-})
-
-export { getMvPersons, updateVillageObjectId }
+export { getMvPersons }

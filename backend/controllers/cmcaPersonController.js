@@ -10,7 +10,7 @@ const getCmcaPersons = asynchandler(async (req, res) => {
   const year = req.query.year
 
   if (!year) {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 
@@ -19,7 +19,7 @@ const getCmcaPersons = asynchandler(async (req, res) => {
       const persons = await CmcaPerson2017.find({ villageCode })
 
       if (!persons) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
@@ -28,7 +28,7 @@ const getCmcaPersons = asynchandler(async (req, res) => {
       const persons = await CmcaPerson2017.find({})
 
       if (!persons) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
@@ -39,7 +39,7 @@ const getCmcaPersons = asynchandler(async (req, res) => {
       const persons = await CmcaPerson2021.find({ villageCode })
 
       if (!persons) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
@@ -48,14 +48,14 @@ const getCmcaPersons = asynchandler(async (req, res) => {
       const persons = await CmcaPerson2021.find({})
 
       if (!persons) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
       res.status(200).json(persons)
     }
   } else {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 })

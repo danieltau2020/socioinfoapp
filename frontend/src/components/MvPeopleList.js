@@ -1,20 +1,31 @@
 import React, { useMemo } from 'react'
 import { Container, Row, Col, Button, Form, Table } from 'react-bootstrap'
-import { useTable, useGlobalFilter, usePagination } from 'react-table'
-import GlobalFilter from '../components/GlobalFilter'
-import VillageDropDown from '../components/VillageDropDown'
+import {
+  useTable,
+  useGlobalFilter,
+  usePagination,
+  useRowSelect
+} from 'react-table'
+import { useHistory } from 'react-router-dom'
+import GlobalFilter from './GlobalFilter'
+import VillageDropDown from './VillageDropDown'
 
-const BankAccountList = ({
-  bankAccounts,
+const MvPeopleList = ({
+  persons,
   regions,
   villageSelected,
   regionType,
   year,
   defaultVillage
 }) => {
+  const history = useHistory()
+
   const columns = useMemo(
     () => [
-      { Header: 'Id', accessor: '_id' },
+      {
+        Header: 'Id',
+        accessor: '_id'
+      },
       {
         Header: '#',
         id: 'row',
@@ -25,17 +36,18 @@ const BankAccountList = ({
       { Header: 'Village', accessor: 'villageName' },
       { Header: 'DW', accessor: 'dwelling' },
       { Header: 'HH', accessor: 'household' },
-      { Header: 'Account Name', accessor: 'accountName' },
-      { Header: 'Account Number', accessor: 'accountNumber' },
-      { Header: 'Bank', accessor: 'bank' },
-      { Header: 'Account Status', accessor: 'accountStatus' }
+      { Header: 'First Name', accessor: 'firstName' },
+      { Header: 'Last Name', accessor: 'lastName' },
+      { Header: 'Sex', accessor: 'gender' },
+      { Header: 'Relationship', accessor: 'relationship' }
     ],
     []
   )
-  const data = useMemo(() => bankAccounts, [bankAccounts])
+  const data = useMemo(() => persons, [persons])
 
-  const bankAccountTable = useTable(
+  const personTable = useTable(
     {
+      // autoResetSelectedRows: false,
       columns,
       data,
       initialState: {
@@ -43,7 +55,8 @@ const BankAccountList = ({
       }
     },
     useGlobalFilter,
-    usePagination
+    usePagination,
+    useRowSelect
   )
 
   const {
@@ -52,6 +65,7 @@ const BankAccountList = ({
     headerGroups,
     page,
     rows,
+    toggleAllRowsSelected,
     nextPage,
     previousPage,
     prepareRow,
@@ -63,16 +77,23 @@ const BankAccountList = ({
     setPageSize,
     state,
     setGlobalFilter
-  } = bankAccountTable
+  } = personTable
 
   const { globalFilter, pageIndex, pageSize } = state
+
+  const handleRowClick = (row) => {
+    const { regionCode, villageCode, dwelling, household } = row.original
+    history.push(
+      `/familylist/mv/${year}/${regionCode}/${villageCode}/${dwelling}/${household}`
+    )
+  }
 
   return (
     <Container>
       <Row>
         <Col sm>
           <h4 className='h4-screen'>
-            <i className='fas fa-coins'></i> Bank Account
+            <i className='fas fa-users'></i> People
           </h4>
         </Col>
       </Row>
@@ -82,28 +103,28 @@ const BankAccountList = ({
         </Col>
       </Row>
       <Row className='row-cols-2'>
-        <Col xs='6' sm='6' md='6'>
-          <p>Filter by villages</p>
+        <Col sm='6' md='6'>
+          <p className='p-screen'>Filter by villages</p>
         </Col>
-        <Col xs='6' sm='6' md='6' className='text-end'>
-          <p>
+        <Col sm='6' md='6' className='text-end'>
+          <p className='p-screen'>
             {data.length < 1
               ? 'Loading...'
               : rows.length < 1
-              ? 'No records...'
+              ? 'Nil records...'
               : rows.length.toLocaleString() + ' Record(s)'}
           </p>
         </Col>
       </Row>
       <Row className='justify-content-between mt-1 col-screen-filter-search'>
-        <Col xs='6' sm='3' md='3' className='d-grid'>
+        <Col sm='3' md='3' className='d-grid'>
           <VillageDropDown
             regions={regions}
             villageSelectedHandler={villageSelected}
             defaultVillage={defaultVillage}
           />
         </Col>
-        <Col xs='6' sm='3' md='3' className='mt-1'>
+        <Col sm='3' md='3' className='mt-1'>
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </Col>
       </Row>
@@ -112,7 +133,7 @@ const BankAccountList = ({
         striped
         hover
         size='sm'
-        className='mt-3'
+        className='mt-3 selectable'
         {...getTableProps()}
       >
         <thead>
@@ -128,7 +149,18 @@ const BankAccountList = ({
           {page.map((row) => {
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                {...row.getRowProps({
+                  style: {
+                    backgroundColor: row.isSelected ? '#ffd1b3' : ''
+                  },
+                  onClick: (e) => {
+                    toggleAllRowsSelected(false)
+                    row.toggleRowSelected()
+                    handleRowClick(row)
+                  }
+                })}
+              >
                 {row.cells.map((cell) => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
@@ -143,7 +175,7 @@ const BankAccountList = ({
             Page {pageIndex + 1} of {pageOptions.length}
           </p>
         </Col>
-        <Col xs='6' sm='6' md='3' className='text-center mt-1'>
+        <Col xs='6' sm='6' md='3' className='mt-1'>
           <Form.Control
             className='form-select me-1'
             as='select'
@@ -166,6 +198,7 @@ const BankAccountList = ({
               const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
               gotoPage(pageNumber)
             }}
+            className='tbl-go-to-page'
           />
         </Col>
         <Col xs='6' sm='6' md='3' className='mt-1'>
@@ -204,4 +237,4 @@ const BankAccountList = ({
   )
 }
 
-export default BankAccountList
+export default MvPeopleList

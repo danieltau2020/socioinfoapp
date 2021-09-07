@@ -10,7 +10,7 @@ const getMvBankAccounts = asynchandler(async (req, res) => {
   const year = req.query.year
 
   if (!year) {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 
@@ -21,7 +21,7 @@ const getMvBankAccounts = asynchandler(async (req, res) => {
       })
 
       if (!bankAccounts) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
@@ -30,7 +30,7 @@ const getMvBankAccounts = asynchandler(async (req, res) => {
       const bankAccounts = await MvBankAccount2017.find({})
 
       if (!bankAccounts) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
@@ -43,7 +43,7 @@ const getMvBankAccounts = asynchandler(async (req, res) => {
       })
 
       if (!bankAccounts) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
@@ -52,14 +52,14 @@ const getMvBankAccounts = asynchandler(async (req, res) => {
       const bankAccounts = await MvBankAccount2021.find({})
 
       if (!bankAccounts) {
-        res.status(401)
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
 
       res.status(200).json(bankAccounts)
     }
   } else {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 })

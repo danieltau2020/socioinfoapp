@@ -9,7 +9,7 @@ const getMvBankTypes2017 = asynchandler(async (req, res) => {
   const mvBankTypes2017 = await MvBankTypes2017.find({})
 
   if (!mvBankTypes2017) {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 
@@ -23,7 +23,7 @@ const getMvBankTypes2021 = asynchandler(async (req, res) => {
   const mvBankTypes2021 = await MvBankTypes2021.find({})
 
   if (!mvBankTypes2021) {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 

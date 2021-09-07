@@ -9,7 +9,7 @@ const getCmcaBankTypes2017 = asynchandler(async (req, res) => {
   const cmcaBankTypes2017 = await CmcaBankTypes2017.find({})
 
   if (!CmcaBankTypes2017) {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 
@@ -23,7 +23,7 @@ const getCmcaBankTypes2021 = asynchandler(async (req, res) => {
   const cmcaBankTypes2021 = await CmcaBankTypes2021.find({})
 
   if (!cmcaBankTypes2021) {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 

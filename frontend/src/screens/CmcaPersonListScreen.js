@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
-import PeopleList from '../components/PeopleList'
+import CmcaPeopleList from '../components/CmcaPeopleList'
 import { getAllCmcaPersons } from '../actions/cmcaPersonActions'
 import { getRegionVillage } from '../actions/regionActions'
 import { CMCA_PERSON_LIST_RESET } from '../constants/cmcaPersonConstants'
@@ -43,7 +43,7 @@ const CmcaPersonListScreen = ({ match }) => {
       {loadingPerson || loadingRegion ? (
         <Loader />
       ) : (
-        <PeopleList
+        <CmcaPeopleList
           persons={cmcaPersons}
           regions={regions}
           villageSelected={villageSelected}

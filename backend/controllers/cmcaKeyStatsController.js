@@ -7,12 +7,12 @@ import CmcaKeyStats from '../models/cmcaKeyStatsModel.js'
 const getCmcaKeyStats = asynchandler(async (req, res) => {
   const cmcaKeyStats = await CmcaKeyStats.find({})
 
-  if (cmcaKeyStats) {
-    res.status(200).json(cmcaKeyStats)
-  } else {
-    res.status(401)
+  if (!cmcaKeyStats) {
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
+
+  res.status(200).json(cmcaKeyStats)
 })
 
 export { getCmcaKeyStats }

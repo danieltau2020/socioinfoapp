@@ -1,7 +1,6 @@
 @import 'colors.css';
 
 .app-styleguide .navbar .navbar-brand {
-  font-size: 1.5rem;
   color: var(--white-color);
 }
 

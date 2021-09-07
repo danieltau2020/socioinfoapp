@@ -25,6 +25,8 @@ import mvPopulationRoutes from './routes/mvPopulationRoutes.js'
 import cmcaBankTypesRoutes from './routes/cmcaBankTypesRoutes.js'
 import mvBankTypesRoutes from './routes/mvBankTypesRoutes.js'
 import cmcaPaymentsRoutes from './routes/cmcaPaymentsRoutes.js'
+import cmcaFamilyListRoutes from './routes/cmcaFamilyListRoutes.js'
+import mvFamilyListRoutes from './routes/mvFamilyListRoutes.js'
 
 dotenv.config()
 
@@ -75,7 +77,9 @@ app.use('/api/statistics/population/cmca', cmcaRegionPopulationRoutes)
 app.use('/api/statistics/population/mv', mvPopulationRoutes)
 app.use('/api/statistics/bankaccounts/cmca', cmcaBankTypesRoutes)
 app.use('/api/statistics/bankaccounts/mv', mvBankTypesRoutes)
-app.use('/api/payments/cmca/2021', cmcaPaymentsRoutes)
+app.use('/api/payments/cmca', cmcaPaymentsRoutes)
+app.use('/api/familylist/cmca', cmcaFamilyListRoutes)
+app.use('/api/familylist/mv', mvFamilyListRoutes)
 
 app.use(notFound)
 app.use(errorHandler)

@@ -1,24 +1,23 @@
 import axios from 'axios'
 import {
-  CMCA_PAYMENTS_REQUEST,
-  CMCA_PAYMENTS_SUCCESS,
-  CMCA_PAYMENTS_FAIL
-} from '../constants/cmcaPaymentsConstants.js'
+  MV_FAMILY_LIST_REQUEST,
+  MV_FAMILY_LIST_SUCCESS,
+  MV_FAMILY_LIST_FAIL
+} from '../constants/mvFamilyListConstants.js'
 import { setAlert } from './alertActions.js'
 
-export const getCmcaPayments =
-  (year, villageCode = '', pmtBatch) =>
-  async (dispatch) => {
+export const getMvFamilyList =
+  (year, regCode, villCode, dwelling, household) => async (dispatch) => {
     try {
       dispatch({
-        type: CMCA_PAYMENTS_REQUEST
+        type: MV_FAMILY_LIST_REQUEST
       })
       const { data } = await axios.get(
-        `/api/payments/cmca/${year}?pmtBatch=${pmtBatch}&&villCode=${villageCode}`
+        `/api/familylist/mv/${year}?regCode=${regCode}&&villCode=${villCode}&&dwelling=${dwelling}&&household=${household}`
       )
 
       dispatch({
-        type: CMCA_PAYMENTS_SUCCESS,
+        type: MV_FAMILY_LIST_SUCCESS,
         payload: data
       })
     } catch (error) {
@@ -27,7 +26,7 @@ export const getCmcaPayments =
       }
 
       dispatch({
-        type: CMCA_PAYMENTS_FAIL,
+        type: MV_FAMILY_LIST_FAIL,
         payload:
           error.response && error.response.data.message
             ? error.response.data.message

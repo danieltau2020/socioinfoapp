@@ -18,3 +18,7 @@ table tbody tr td {
   white-space: nowrap;
   color: var(--black-color);
 }
+
+.selectable tbody {
+  cursor: pointer;
+}

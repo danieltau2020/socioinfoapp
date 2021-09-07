@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import { getMvBankAccounts } from '../actions/mvBankAccountActions'
 import { getRegionVillage } from '../actions/regionActions'
-import BankAccountList from '../components/BankAccountList'
+import MvBankAccountList from '../components/MvBankAccountList'
 import { MV_BANK_ACCOUNT_LIST_RESET } from '../constants/mvBankAccountConstants'
 
 const MvBankAccountListScreen = ({ match }) => {
@@ -43,7 +43,7 @@ const MvBankAccountListScreen = ({ match }) => {
       {loadingBankAccount || loadingRegion ? (
         <Loader />
       ) : (
-        <BankAccountList
+        <MvBankAccountList
           bankAccounts={mvBankAccounts}
           regions={regions}
           villageSelected={villageSelected}

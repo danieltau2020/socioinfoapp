@@ -1,18 +1,25 @@
 import React, { useMemo } from 'react'
 import { Container, Row, Col, Button, Form, Table } from 'react-bootstrap'
-import { useTable, useGlobalFilter, usePagination } from 'react-table'
+import {
+  useTable,
+  useGlobalFilter,
+  usePagination,
+  useRowSelect
+} from 'react-table'
+import { useHistory } from 'react-router-dom'
 import GlobalFilter from './GlobalFilter'
 import VillageDropDown from './VillageDropDown'
 
-const PaymentList = ({
-  payments,
+const MvBankAccountList = ({
+  bankAccounts,
   regions,
   villageSelected,
   regionType,
   year,
-  pmtBatch,
   defaultVillage
 }) => {
+  const history = useHistory()
+
   const columns = useMemo(
     () => [
       { Header: 'Id', accessor: '_id' },
@@ -23,35 +30,19 @@ const PaymentList = ({
           return row.index + 1
         }
       },
-      { Header: 'Batch', accessor: 'pmtBatch' },
       { Header: 'Village', accessor: 'villageName' },
       { Header: 'DW', accessor: 'dwelling' },
       { Header: 'HH', accessor: 'household' },
-      {
-        Header: 'Family Size',
-        accessor: 'familySize',
-        Cell: ({ cell: { value } }) => {
-          return value.toLocaleString()
-        }
-      },
-      {
-        Header: 'Amount (PGK)',
-        accessor: 'totalAmount',
-        Cell: ({ cell: { value } }) => {
-          return value.toLocaleString()
-        }
-      },
       { Header: 'Account Name', accessor: 'accountName' },
       { Header: 'Account Number', accessor: 'accountNumber' },
       { Header: 'Bank', accessor: 'bank' },
-      { Header: 'Account Status', accessor: 'accountStatus' },
-      { Header: 'Payment Status', accessor: 'paymentStatus' }
+      { Header: 'Account Status', accessor: 'accountStatus' }
     ],
     []
   )
-  const data = useMemo(() => payments, [payments])
+  const data = useMemo(() => bankAccounts, [bankAccounts])
 
-  const paymentsTable = useTable(
+  const bankAccountTable = useTable(
     {
       columns,
       data,
@@ -60,7 +51,8 @@ const PaymentList = ({
       }
     },
     useGlobalFilter,
-    usePagination
+    usePagination,
+    useRowSelect
   )
 
   const {
@@ -69,6 +61,7 @@ const PaymentList = ({
     headerGroups,
     page,
     rows,
+    toggleAllRowsSelected,
     nextPage,
     previousPage,
     prepareRow,
@@ -80,58 +73,65 @@ const PaymentList = ({
     setPageSize,
     state,
     setGlobalFilter
-  } = paymentsTable
+  } = bankAccountTable
 
   const { globalFilter, pageIndex, pageSize } = state
+
+  const handleRowClick = (row) => {
+    const { regionCode, villageCode, dwelling, household } = row.original
+    history.push(
+      `/familylist/mv/${year}/${regionCode}/${villageCode}/${dwelling}/${household}`
+    )
+  }
 
   return (
     <Container>
       <Row>
         <Col sm>
           <h4 className='h4-screen'>
-            <i className='fas fa-money-check-alt'></i> Payments
+            <i className='fas fa-coins'></i> Bank Account
           </h4>
         </Col>
       </Row>
       <Row className='text-center'>
         <Col sm>
-          <h4 className='h4-screen'>{`${regionType} ${year} Batch ${pmtBatch} Payment List`}</h4>
+          <h4 className='h4-screen'>{`${regionType} ${year} Dataset`}</h4>
         </Col>
       </Row>
       <Row className='row-cols-2'>
-        <Col sm='6' md='6'>
-          <p className='p-screen'>Filter by villages</p>
+        <Col xs='6' sm='6' md='6'>
+          <p>Filter by villages</p>
         </Col>
-        <Col sm='6' md='6' className='text-end'>
-          <p className='p-screen'>
+        <Col xs='6' sm='6' md='6' className='text-end'>
+          <p>
             {data.length < 1
               ? 'Loading...'
               : rows.length < 1
-              ? 'Nil records...'
+              ? 'No records...'
               : rows.length.toLocaleString() + ' Record(s)'}
           </p>
         </Col>
       </Row>
       <Row className='justify-content-between mt-1 col-screen-filter-search'>
-        <Col sm='3' md='3' className='d-grid'>
+        <Col xs='6' sm='3' md='3' className='d-grid'>
           <VillageDropDown
             regions={regions}
             villageSelectedHandler={villageSelected}
             defaultVillage={defaultVillage}
           />
         </Col>
-        <Col sm='3' md='3' className='mt-1'>
+        <Col xs='6' sm='3' md='3' className='mt-1'>
           <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </Col>
       </Row>
-      <Row className='mt-3'>
-        <Col sm>
-          <p className='p-screen'>{`Total Amount (PGK): ${payments
-            .reduce((totalPmt, pmt) => totalPmt + pmt.totalAmount, 0)
-            .toLocaleString()}`}</p>
-        </Col>
-      </Row>
-      <Table responsive striped hover size='sm' {...getTableProps()}>
+      <Table
+        responsive
+        striped
+        hover
+        size='sm'
+        className='mt-3 selectable'
+        {...getTableProps()}
+      >
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -145,7 +145,18 @@ const PaymentList = ({
           {page.map((row) => {
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()}>
+              <tr
+                {...row.getRowProps({
+                  style: {
+                    backgroundColor: row.isSelected ? '#ffd1b3' : ''
+                  },
+                  onClick: (e) => {
+                    toggleAllRowsSelected(false)
+                    row.toggleRowSelected()
+                    handleRowClick(row)
+                  }
+                })}
+              >
                 {row.cells.map((cell) => {
                   return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
@@ -160,7 +171,7 @@ const PaymentList = ({
             Page {pageIndex + 1} of {pageOptions.length}
           </p>
         </Col>
-        <Col xs='6' sm='6' md='3' className='mt-1'>
+        <Col xs='6' sm='6' md='3' className='text-center mt-1'>
           <Form.Control
             className='form-select me-1'
             as='select'
@@ -183,7 +194,6 @@ const PaymentList = ({
               const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
               gotoPage(pageNumber)
             }}
-            className='tbl-go-to-page'
           />
         </Col>
         <Col xs='6' sm='6' md='3' className='mt-1'>
@@ -222,4 +232,4 @@ const PaymentList = ({
   )
 }
 
-export default PaymentList
+export default MvBankAccountList

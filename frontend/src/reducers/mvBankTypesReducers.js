@@ -57,7 +57,6 @@ export const mvBankTypes2021ListReducer = (
     case MV_BANK_TYPES_2021_LIST_FAIL:
       return {
         loading: false,
-        mvBankTypes2021: [],
         error: action.payload
       }
     case MV_BANK_TYPES_2021_LIST_RESET:

@@ -15,24 +15,24 @@ const getCmcaPayments2021 = asynchandler(async (req, res) => {
         villageCode
       })
 
-      if (cmcaPayment2021) {
-        res.status(200).json(cmcaPayment2021)
-      } else {
-        res.status(401)
+      if (!cmcaPayment2021) {
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
+
+      res.status(200).json(cmcaPayment2021)
     } else {
       const cmcaPayment2021 = await CmcaPayments2021.find({ pmtBatch })
 
-      if (cmcaPayment2021) {
-        res.status(200).json(cmcaPayment2021)
-      } else {
-        res.status(401)
+      if (!cmcaPayment2021) {
+        res.status(400)
         throw new Error('Error occured. Please try again.')
       }
+
+      res.status(200).json(cmcaPayment2021)
     }
   } else {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 })

@@ -22,12 +22,10 @@ export const userLoginReducer = (
     case USER_LOGIN_FAIL:
       return {
         loading: false,
-        // userInfo: {},
-        error: action.payload,
-        isAuthenticated: false
+        error: action.payload
       }
     case USER_LOGOUT:
-      return { isAuthenticated: false }
+      return {}
     default:
       return state
   }

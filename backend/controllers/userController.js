@@ -7,7 +7,7 @@ import User from '../models/userModel.js'
 // @route   POST /api/user
 // @access  Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, userName, password } = req.body
+  const { name, userName, password, role } = req.body
 
   // Find user
   const userExists = await User.findOne({ userName })
@@ -20,7 +20,8 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await User.create({
     name,
     userName,
-    password
+    password,
+    role
   })
 
   if (user) {
@@ -52,7 +53,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ userName })
 
   if (!user) {
-    res.status(401)
+    res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 
@@ -69,7 +70,7 @@ const loginUser = asyncHandler(async (req, res) => {
     // Send cookie with token in it
     createCookie(user, 200, res)
   } else {
-    res.status(401)
+    res.status(400)
     throw new Error('Invalid username or password')
   }
 })

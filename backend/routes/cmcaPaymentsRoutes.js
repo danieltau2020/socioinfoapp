@@ -4,6 +4,6 @@ import { protect } from '../middleware/authMiddleware.js'
 
 const router = express.Router({ mergeParams: true })
 
-router.route('/').get(protect, getCmcaPayments2021)
+router.route('/2021').get(protect, getCmcaPayments2021)
 
 export default router

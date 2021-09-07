@@ -14,7 +14,7 @@ const getRegionVillage = asynchandler(async (req, res) => {
       .sort({ regionCode: 1, villageCode: 1 })
 
     if (!regions) {
-      res.status(401)
+      res.status(400)
       throw new Error('Error occured. Please try again.')
     }
 
@@ -25,7 +25,7 @@ const getRegionVillage = asynchandler(async (req, res) => {
       .sort({ regionCode: 1, villageCode: 1 })
 
     if (!regions) {
-      res.status(401)
+      res.status(400)
       throw new Error('Error occured. Please try again.')
     }
 

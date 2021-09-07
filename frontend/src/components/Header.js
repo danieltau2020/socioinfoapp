@@ -78,9 +78,9 @@ const Header = () => {
                       <Row>
                         <Col sm='12' md='12' className='text-left'>
                           <Dropdown.Header>Mine Villages</Dropdown.Header>
-                          <LinkContainer to={`/people/mv/${'2017'}/dataset`}>
+                          <LinkContainer to={`/people/mv/${'2020'}/dataset`}>
                             <NavDropdown.Item>
-                              Mine Villages 2017 Population
+                              Mine Villages 2020 Population
                             </NavDropdown.Item>
                           </LinkContainer>
                           <LinkContainer to={`/people/mv/${'2021'}/dataset`}>
@@ -126,10 +126,10 @@ const Header = () => {
                         <Col sm='12' md='12' className='text-left'>
                           <Dropdown.Header>Mine Villages</Dropdown.Header>
                           <LinkContainer
-                            to={`/bankaccount/mv/${'2017'}/dataset`}
+                            to={`/bankaccount/mv/${'2020'}/dataset`}
                           >
                             <NavDropdown.Item>
-                              Mine Villages 2017 Bank Accounts
+                              Mine Villages 2020 Bank Accounts
                             </NavDropdown.Item>
                           </LinkContainer>
                           <LinkContainer

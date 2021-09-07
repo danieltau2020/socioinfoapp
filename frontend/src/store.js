@@ -18,7 +18,7 @@ import {
   cmcaRegionPopulation2021ListReducer
 } from './reducers/cmcaRegionPopulationReducers'
 import {
-  mvPopulation2017ListReducer,
+  mvPopulation2020ListReducer,
   mvPopulation2021ListReducer
 } from './reducers/mvPopulationReducers'
 import {
@@ -26,7 +26,7 @@ import {
   cmcaBankTypes2021ListReducer
 } from './reducers/cmcaBankTypesReducers'
 import {
-  mvBankTypes2017ListReducer,
+  mvBankTypes2020ListReducer,
   mvBankTypes2021ListReducer
 } from './reducers/mvBankTypesReducers'
 import { cmcaPaymentsReducer } from './reducers/cmcaPaymentsReducers'
@@ -46,11 +46,11 @@ const reducer = combineReducers({
   mvKeyStatList: mvKeyStatsReducer,
   cmcaRegionPopulation2017List: cmcaRegionPopulation2017ListReducer,
   cmcaRegionPopulation2021List: cmcaRegionPopulation2021ListReducer,
-  mvPopulation2017List: mvPopulation2017ListReducer,
+  mvPopulation2020List: mvPopulation2020ListReducer,
   mvPopulation2021List: mvPopulation2021ListReducer,
   cmcaBankTypes2017List: cmcaBankTypes2017ListReducer,
   cmcaBankTypes2021List: cmcaBankTypes2021ListReducer,
-  mvBankTypes2017List: mvBankTypes2017ListReducer,
+  mvBankTypes2020List: mvBankTypes2020ListReducer,
   mvBankTypes2021List: mvBankTypes2021ListReducer,
   cmcaPaymentsList: cmcaPaymentsReducer,
   cmcaFamilyList: cmcaFamilyListReducer,

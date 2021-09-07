@@ -24,9 +24,9 @@ const MineVillagesPopulationSchema = new Schema({
   }
 })
 
-const MvPopulation2017 = mongoose.model(
-  'mvpopulation2017',
+const MvPopulation2020 = mongoose.model(
+  'mvpopulation2020',
   MineVillagesPopulationSchema
 )
 
-export default MvPopulation2017
+export default MvPopulation2020

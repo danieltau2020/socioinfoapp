@@ -1,7 +1,6 @@
 import asynchandler from 'express-async-handler'
-import MvPerson2017 from '../models/mvPerson2017Model.js'
+import MvPerson2020 from '../models/mvPerson2020Model.js'
 import MvPerson2021 from '../models/mvPerson2021Model.js'
-import Village from '../models/villageModel.js'
 
 // @desc    Fetch all persons from mine villages
 // @route   GET /api/person/mv
@@ -15,9 +14,9 @@ const getMvPersons = asynchandler(async (req, res) => {
     throw new Error('Error occured. Please try again.')
   }
 
-  if (year === '2017') {
+  if (year === '2020') {
     if (villageCode) {
-      const persons = await MvPerson2017.find({ villageCode })
+      const persons = await MvPerson2020.find({ villageCode })
 
       if (!persons) {
         res.status(400)
@@ -26,7 +25,7 @@ const getMvPersons = asynchandler(async (req, res) => {
 
       res.status(200).json(persons)
     } else {
-      const persons = await MvPerson2017.find({})
+      const persons = await MvPerson2020.find({})
 
       if (!persons) {
         res.status(400)

@@ -53,9 +53,9 @@ const BankAccountSchema = new Schema(
   { timestamps: true }
 )
 
-const MvBankAccount2017 = mongoose.model(
-  'mvbankaccounts2017',
+const MvBankAccount2020 = mongoose.model(
+  'mvbankaccounts2020',
   BankAccountSchema
 )
 
-export default MvBankAccount2017
+export default MvBankAccount2020

@@ -1,15 +1,15 @@
 import asynchandler from 'express-async-handler'
-import MvPerson2017 from '../models/mvPerson2017Model.js'
+import MvPerson2020 from '../models/mvPerson2020Model.js'
 import MvPerson2021 from '../models/mvPerson2021Model.js'
-import MvBankAccount2017 from '../models/mvBankAccount2017Model.js'
+import MvBankAccount2020 from '../models/mvBankAccount2020Model.js'
 import MvBankAccount2021 from '../models/mvBankAccount2021Model.js'
 import Region from '../models/regionModel.js'
 import Village from '../models/villageModel.js'
 
-// @desc    Fetch mine villages family list 2017 dataset
-// @route   GET /api/familylist/mv/2017
+// @desc    Fetch mine villages family list 2020 dataset
+// @route   GET /api/familylist/mv/2020
 // @access  Private
-const getMvFamilyList2017 = asynchandler(async (req, res) => {
+const getMvFamilyList2020 = asynchandler(async (req, res) => {
   const regionCode = req.query.regCode
   const villageCode = req.query.villCode
   const dwelling = req.query.dwelling
@@ -25,13 +25,13 @@ const getMvFamilyList2017 = asynchandler(async (req, res) => {
     'villageName'
   )
 
-  const familyList = await MvPerson2017.find({
+  const familyList = await MvPerson2020.find({
     villageCode,
     dwelling,
     household
   })
 
-  const familyAccount = await MvBankAccount2017.findOne({
+  const familyAccount = await MvBankAccount2020.findOne({
     villageCode,
     dwelling,
     household
@@ -84,4 +84,4 @@ const getMvFamilyList2021 = asynchandler(async (req, res) => {
   res.status(200).json({ regionName, villageName, familyAccount, familyList })
 })
 
-export { getMvFamilyList2017, getMvFamilyList2021 }
+export { getMvFamilyList2020, getMvFamilyList2021 }

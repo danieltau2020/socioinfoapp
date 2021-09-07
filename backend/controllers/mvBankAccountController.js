@@ -1,5 +1,5 @@
 import asynchandler from 'express-async-handler'
-import MvBankAccount2017 from '../models/mvBankAccount2017Model.js'
+import MvBankAccount2020 from '../models/mvBankAccount2020Model.js'
 import MvBankAccount2021 from '../models/mvBankAccount2021Model.js'
 
 // @desc    Fetch all bank accounts for mine vilalges
@@ -14,9 +14,9 @@ const getMvBankAccounts = asynchandler(async (req, res) => {
     throw new Error('Error occured. Please try again.')
   }
 
-  if (year === '2017') {
+  if (year === '2020') {
     if (villageCode) {
-      const bankAccounts = await MvBankAccount2017.find({
+      const bankAccounts = await MvBankAccount2020.find({
         villageCode
       })
 
@@ -27,7 +27,7 @@ const getMvBankAccounts = asynchandler(async (req, res) => {
 
       res.status(200).json(bankAccounts)
     } else {
-      const bankAccounts = await MvBankAccount2017.find({})
+      const bankAccounts = await MvBankAccount2020.find({})
 
       if (!bankAccounts) {
         res.status(400)

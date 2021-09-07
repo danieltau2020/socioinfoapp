@@ -7,10 +7,10 @@ const MvKeyStats = ({ mvKeyStats }) => {
     <>
       <Row className='justify-content-center text-center'>
         {mvKeyStats
-          .filter((stats) => stats.year === '2017')
+          .filter((stats) => stats.year === '2020')
           .map((stats) => (
             <Col key={stats._id} sm='12' md='3'>
-              <Link to={`/people/mv/${'2017'}/dataset`} className='btn'>
+              <Link to={`/people/mv/${'2020'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>
                     <h1 className='card-h1'>
@@ -20,7 +20,7 @@ const MvKeyStats = ({ mvKeyStats }) => {
                     <Card.Text className='m-0'>
                       {stats.peopleCount.toLocaleString()}
                     </Card.Text>
-                    <Card.Text>Census 2017</Card.Text>
+                    <Card.Text>Census 2020</Card.Text>
                   </Card.Body>
                 </Card>
               </Link>
@@ -49,10 +49,10 @@ const MvKeyStats = ({ mvKeyStats }) => {
       </Row>
       <Row className='justify-content-center text-center'>
         {mvKeyStats
-          .filter((stats) => stats.year === '2017')
+          .filter((stats) => stats.year === '2020')
           .map((stats) => (
             <Col key={stats._id} sm='12' md='3'>
-              <Link to={`/bankaccount/mv/${'2017'}/dataset`} className='btn'>
+              <Link to={`/bankaccount/mv/${'2020'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>
                     <h1 className='card-h1'>
@@ -62,7 +62,7 @@ const MvKeyStats = ({ mvKeyStats }) => {
                     <Card.Text className='m-0'>
                       {stats.bankAccountCount.toLocaleString()}
                     </Card.Text>
-                    <Card.Text>Census 2017</Card.Text>
+                    <Card.Text>Census 2020</Card.Text>
                   </Card.Body>
                 </Card>
               </Link>

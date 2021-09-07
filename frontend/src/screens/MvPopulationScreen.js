@@ -4,15 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import MvPopulationStats from '../components/MvPopulationStats'
 import {
-  getMvPopulation2017,
+  getMvPopulation2020,
   getMvPopulation2021
 } from '../actions/mvPopulationActions'
 
 const MvPopulationScreen = () => {
   const dispatch = useDispatch()
 
-  const mvPopulation2017List = useSelector(
-    (state) => state.mvPopulation2017List
+  const mvPopulation2020List = useSelector(
+    (state) => state.mvPopulation2020List
   )
 
   const mvPopulation2021List = useSelector(
@@ -20,10 +20,10 @@ const MvPopulationScreen = () => {
   )
 
   const {
-    loading: loadingMvPopulation2017,
-    error: errorMvPopulation2017,
-    mvPopulation2017
-  } = mvPopulation2017List
+    loading: loadingMvPopulation2020,
+    error: errorMvPopulation2020,
+    mvPopulation2020
+  } = mvPopulation2020List
 
   const {
     loading: loadingMvPopulation2021,
@@ -32,11 +32,11 @@ const MvPopulationScreen = () => {
   } = mvPopulation2021List
 
   useEffect(() => {
-    dispatch(getMvPopulation2017())
+    dispatch(getMvPopulation2020())
     dispatch(getMvPopulation2021())
   }, [dispatch])
 
-  if (errorMvPopulation2017 || errorMvPopulation2021) {
+  if (errorMvPopulation2020 || errorMvPopulation2021) {
     return null
   }
 
@@ -51,10 +51,10 @@ const MvPopulationScreen = () => {
         </Col>
       </Row>
 
-      {loadingMvPopulation2017 ? (
+      {loadingMvPopulation2020 ? (
         <Loader />
       ) : (
-        <MvPopulationStats mvPopulation={mvPopulation2017} year={'2017'} />
+        <MvPopulationStats mvPopulation={mvPopulation2020} year={'2020'} />
       )}
 
       {loadingMvPopulation2021 ? (

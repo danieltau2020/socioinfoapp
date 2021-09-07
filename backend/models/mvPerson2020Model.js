@@ -83,6 +83,6 @@ const PersonSchema = new Schema(
   { timestamps: true }
 )
 
-const MvPerson2017 = mongoose.model('mvpeople2017', PersonSchema)
+const MvPerson2020 = mongoose.model('mvpeople2020', PersonSchema)
 
-export default MvPerson2017
+export default MvPerson2020

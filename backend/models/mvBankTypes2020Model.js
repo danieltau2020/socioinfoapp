@@ -32,6 +32,6 @@ const MvBankTypesSchema = new Schema({
   }
 })
 
-const MvBankTypes2017 = mongoose.model('mvbanktypes2017', MvBankTypesSchema)
+const MvBankTypes2020 = mongoose.model('mvbanktypes2020', MvBankTypesSchema)
 
-export default MvBankTypes2017
+export default MvBankTypes2020

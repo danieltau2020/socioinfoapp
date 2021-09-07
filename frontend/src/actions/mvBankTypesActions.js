@@ -1,24 +1,24 @@
 import axios from 'axios'
 import {
-  MV_BANK_TYPES_2017_LIST_REQUEST,
-  MV_BANK_TYPES_2017_LIST_SUCCESS,
-  MV_BANK_TYPES_2017_LIST_FAIL,
+  MV_BANK_TYPES_2020_LIST_REQUEST,
+  MV_BANK_TYPES_2020_LIST_SUCCESS,
+  MV_BANK_TYPES_2020_LIST_FAIL,
   MV_BANK_TYPES_2021_LIST_REQUEST,
   MV_BANK_TYPES_2021_LIST_SUCCESS,
   MV_BANK_TYPES_2021_LIST_FAIL
 } from '../constants/mvBankTypesConstants'
 import { setAlert } from './alertActions'
 
-export const getMvBankTypes2017 = () => async (dispatch) => {
+export const getMvBankTypes2020 = () => async (dispatch) => {
   try {
     dispatch({
-      type: MV_BANK_TYPES_2017_LIST_REQUEST
+      type: MV_BANK_TYPES_2020_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/bankaccounts/mv/2017')
+    const { data } = await axios.get('/api/statistics/bankaccounts/mv/2020')
 
     dispatch({
-      type: MV_BANK_TYPES_2017_LIST_SUCCESS,
+      type: MV_BANK_TYPES_2020_LIST_SUCCESS,
       payload: data
     })
   } catch (error) {
@@ -27,7 +27,7 @@ export const getMvBankTypes2017 = () => async (dispatch) => {
     }
 
     dispatch({
-      type: MV_BANK_TYPES_2017_LIST_FAIL,
+      type: MV_BANK_TYPES_2020_LIST_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

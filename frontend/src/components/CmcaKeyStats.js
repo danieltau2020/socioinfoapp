@@ -1,15 +1,15 @@
 import React from 'react'
-import { Row, Col, Card } from 'react-bootstrap'
+import { Container, Row, Col, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const CmcaKeyStats = ({ cmcaKeyStats }) => {
   return (
     <>
-      <Row className='justify-content-center text-center'>
+      <Row className='justify-content-center'>
         {cmcaKeyStats
           .filter((stats) => stats.year === '2017')
           .map((stats) => (
-            <Col key={stats._id} xs='5' sm='4' md='3'>
+            <Col key={stats._id} xs='5' sm='4' md='3' className='px-0 mx-0'>
               <Link to={`/people/cmca/${'2017'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>
@@ -29,7 +29,7 @@ const CmcaKeyStats = ({ cmcaKeyStats }) => {
         {cmcaKeyStats
           .filter((stats) => stats.year === '2021')
           .map((stats) => (
-            <Col key={stats._id} xs='5' sm='4' md='3'>
+            <Col key={stats._id} xs='5' sm='4' md='3' className='px-0 mx-0'>
               <Link to={`/people/cmca/${'2021'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>
@@ -47,11 +47,11 @@ const CmcaKeyStats = ({ cmcaKeyStats }) => {
             </Col>
           ))}
       </Row>
-      <Row className='justify-content-center text-center'>
+      <Row className='justify-content-center'>
         {cmcaKeyStats
           .filter((stats) => stats.year === '2017')
           .map((stats) => (
-            <Col key={stats._id} xs='5' sm='4' md='3'>
+            <Col key={stats._id} xs='5' sm='4' md='3' className='px-0 mx-0'>
               <Link to={`/bankaccount/cmca/${'2017'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>
@@ -71,7 +71,7 @@ const CmcaKeyStats = ({ cmcaKeyStats }) => {
         {cmcaKeyStats
           .filter((stats) => stats.year === '2021')
           .map((stats) => (
-            <Col key={stats._id} xs='5' sm='4' md='3'>
+            <Col key={stats._id} xs='5' sm='4' md='3' className='px-0 mx-0'>
               <Link to={`/bankaccount/cmca/${'2021'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>

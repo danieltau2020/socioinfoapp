@@ -74,6 +74,17 @@
   width: 100px;
 }
 
+@media only screen and (max-width: 400px) {
+  .app-styleguide .card {
+    width: 5rem !important;
+  }
+
+  .app-styleguide .card,
+  .app-styleguide .card .card-title {
+    font-size: 12px !important;
+  }
+}
+
 @media only screen and (max-width: 990px) {
   body {
     font-size: 12px;

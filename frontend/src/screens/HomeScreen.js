@@ -36,7 +36,7 @@ const HomeScreen = () => {
   return (
     <Container>
       <Row className='justify-content-center text-center'>
-        <Col sm='12' md='6'>
+        <Col xs='12' sm='12' md='10' lg='10' xl='8'>
           <h2 className='title-label'>CMCA KEY FIGURES</h2>
         </Col>
       </Row>
@@ -45,12 +45,17 @@ const HomeScreen = () => {
       ) : (
         <CmcaKeyStats cmcaKeyStats={cmcaKeyStats} />
       )}
+
       <Row className='justify-content-center text-center'>
-        <Col sm='12' md='6'>
+        <Col xs='12' sm='12' md='10' lg='10' xl='8'>
           <h2 className='title-label'>MINE VILLAGES KEY FIGURES</h2>
         </Col>
+        {loadingMvKeyStats ? (
+          <Loader />
+        ) : (
+          <MvKeyStats mvKeyStats={mvKeyStats} />
+        )}
       </Row>
-      {loadingMvKeyStats ? <Loader /> : <MvKeyStats mvKeyStats={mvKeyStats} />}
     </Container>
   )
 }

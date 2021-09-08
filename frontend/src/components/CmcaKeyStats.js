@@ -9,7 +9,7 @@ const CmcaKeyStats = ({ cmcaKeyStats }) => {
         {cmcaKeyStats
           .filter((stats) => stats.year === '2017')
           .map((stats) => (
-            <Col key={stats._id} sm='12' md='3'>
+            <Col key={stats._id} xs='5' sm='4' md='3'>
               <Link to={`/people/cmca/${'2017'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>
@@ -29,7 +29,7 @@ const CmcaKeyStats = ({ cmcaKeyStats }) => {
         {cmcaKeyStats
           .filter((stats) => stats.year === '2021')
           .map((stats) => (
-            <Col key={stats._id} sm='12' md='3'>
+            <Col key={stats._id} xs='5' sm='4' md='3'>
               <Link to={`/people/cmca/${'2021'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>
@@ -51,7 +51,7 @@ const CmcaKeyStats = ({ cmcaKeyStats }) => {
         {cmcaKeyStats
           .filter((stats) => stats.year === '2017')
           .map((stats) => (
-            <Col key={stats._id} sm='12' md='3'>
+            <Col key={stats._id} xs='5' sm='4' md='3'>
               <Link to={`/bankaccount/cmca/${'2017'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>
@@ -71,7 +71,7 @@ const CmcaKeyStats = ({ cmcaKeyStats }) => {
         {cmcaKeyStats
           .filter((stats) => stats.year === '2021')
           .map((stats) => (
-            <Col key={stats._id} sm='12' md='3'>
+            <Col key={stats._id} xs='5' sm='4' md='3'>
               <Link to={`/bankaccount/cmca/${'2021'}/dataset`} className='btn'>
                 <Card className='text-center align-items-center'>
                   <Card.Body>

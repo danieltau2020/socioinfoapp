@@ -15,6 +15,7 @@ import MvBankTypesScreen from '../screens/MvBankTypesScreen'
 import CmcaPaymentsListScreen from '../screens/CmcaPaymentsListScreen'
 import CmcaFamilyListScreen from '../screens/CmcaFamilyListScreen'
 import MvFamilyListScreen from '../screens/MvFamilyListScreen'
+import CmcaPaymentsCashAllocationScreen from '../screens/CmcaPaymentsCashAllocationScreen'
 import NotFound from '../components/NotFound'
 import AlertMsg from '../components/AlertMsg'
 
@@ -80,6 +81,11 @@ const Routes = () => {
             exact
             path='/familylist/mv/:year/:regCode/:villCode/:dwelling/:household'
             component={MvFamilyListScreen}
+          />
+          <PrivateRoute
+            exact
+            path='/cashallocation/cmca/:year'
+            component={CmcaPaymentsCashAllocationScreen}
           />
           <Route component={NotFound} />
         </Switch>

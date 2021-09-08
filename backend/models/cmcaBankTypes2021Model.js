@@ -26,6 +26,14 @@ const CmcaBankTypesSchema = new Schema({
     type: Number,
     trim: true
   },
+  notActive: {
+    type: String,
+    trim: true
+  },
+  activeAccount: {
+    type: String,
+    trim: true
+  },
   total: {
     type: Number,
     trim: true

@@ -32,6 +32,7 @@ import {
 import { cmcaPaymentsReducer } from './reducers/cmcaPaymentsReducers'
 import { cmcaFamilyListReducer } from './reducers/cmcaFamilyListReducers'
 import { mvFamilyListReducer } from './reducers/mvFamilyListReducers'
+import { cmcaPaymentsCashAllocation2021Reducer } from './reducers/cmcaPaymentsCashAllocationReducers'
 
 const reducer = combineReducers({
   alerts: alertReducer,
@@ -54,7 +55,8 @@ const reducer = combineReducers({
   mvBankTypes2021List: mvBankTypes2021ListReducer,
   cmcaPaymentsList: cmcaPaymentsReducer,
   cmcaFamilyList: cmcaFamilyListReducer,
-  mvFamilyList: mvFamilyListReducer
+  mvFamilyList: mvFamilyListReducer,
+  cmcaPaymentsCashAllocation2021List: cmcaPaymentsCashAllocation2021Reducer
 })
 
 const userInfoFromStorage = sessionStorage.getItem('userInfo')

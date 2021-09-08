@@ -8,6 +8,7 @@ const CmcaFamilyList = ({
   year,
   cmcaFamily: {
     familyList,
+    pmtBatch: { pmtBatch },
     regionName: { regionName },
     villageName: { villageName },
     familyAccount: { accountName, accountNumber, bank, accountStatus }
@@ -112,6 +113,10 @@ const CmcaFamilyList = ({
           <p className='p-screen m-0'>
             <strong>Account Status: </strong>
             {accountStatus}
+          </p>
+          <p className='p-screen m-0'>
+            <strong>Payment(s): </strong>
+            {!pmtBatch ? 'NA' : `Batch ${pmtBatch}`}
           </p>
         </Col>
       </Row>

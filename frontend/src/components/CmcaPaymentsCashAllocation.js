@@ -1,9 +1,8 @@
-import { parse } from 'dotenv'
 import React, { useMemo } from 'react'
 import { Row, Col, Table } from 'react-bootstrap'
 import { useTable } from 'react-table'
 
-const CmcaBankTypesStats = ({ cmcaBankTypes, year }) => {
+const CmcaPaymentsCashAllocation = ({ cmcaPaymentsCashAllocation, year }) => {
   const columns = useMemo(
     () => [
       { Header: 'Id', accessor: '_id' },
@@ -17,61 +16,36 @@ const CmcaBankTypesStats = ({ cmcaBankTypes, year }) => {
       { Header: 'Year', accessor: 'year' },
       { Header: 'Region', accessor: 'regionName' },
       {
-        Header: 'BSP',
-        accessor: 'bsp',
+        Header: 'Cash Allocation (PGK)',
+        accessor: 'cashAllocation',
+        Cell: ({ cell: { value } }) => {
+          return value.toLocaleString(undefined, { minimumFractionDigits: 2 })
+        }
+      },
+      {
+        Header: 'Total Population',
+        accessor: 'totalPopulation',
         Cell: ({ cell: { value } }) => {
           return value.toLocaleString()
         }
       },
       {
-        Header: 'Westpac',
-        accessor: 'westpac',
+        Header: 'Amount Per Capita (PGK)',
+        accessor: 'amountPerCapita',
         Cell: ({ cell: { value } }) => {
-          return value.toLocaleString()
-        }
-      },
-      {
-        Header: 'ANZ',
-        accessor: 'anz',
-        Cell: ({ cell: { value } }) => {
-          return value.toLocaleString()
-        }
-      },
-      {
-        Header: 'No Account',
-        accessor: 'noAccount',
-        Cell: ({ cell: { value } }) => {
-          return value.toLocaleString()
-        }
-      },
-      {
-        Header: 'Not Active',
-        accessor: 'notActive',
-        Cell: ({ cell: { value } }) => {
-          return value === 'NA' ? value : parseFloat(value).toLocaleString()
-        }
-      },
-      {
-        Header: 'Active',
-        accessor: 'activeAccount',
-        Cell: ({ cell: { value } }) => {
-          return value === 'NA' ? value : parseFloat(value).toLocaleString()
-        }
-      },
-      {
-        Header: 'Total',
-        accessor: 'total',
-        Cell: ({ cell: { value } }) => {
-          return value.toLocaleString()
+          return value.toLocaleString(undefined, { minimumFractionDigits: 2 })
         }
       }
     ],
     []
   )
 
-  const data = useMemo(() => cmcaBankTypes, [cmcaBankTypes])
+  const data = useMemo(
+    () => cmcaPaymentsCashAllocation,
+    [cmcaPaymentsCashAllocation]
+  )
 
-  const cmcaBankTypesTable = useTable({
+  const cmcaPaymentsCashAllocationTable = useTable({
     columns,
     data,
     initialState: {
@@ -80,19 +54,22 @@ const CmcaBankTypesStats = ({ cmcaBankTypes, year }) => {
   })
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
-    cmcaBankTypesTable
+    cmcaPaymentsCashAllocationTable
   return (
     <>
-      <Row className='mt-3'>
+      <Row className='mt-5'>
         <Col sm>
-          <h4 className='h4-screen'>{`${year} Dataset`}</h4>
+          <h4 className='h4-screen'>{`${year} Cash Allocations Per CMCA Region`}</h4>
         </Col>
       </Row>
       <Row className='mt-1'>
         <Col sm>
-          <p className='p-screen'>{`Total Bank Accounts: ${cmcaBankTypes
-            .reduce((totalPop, pop) => totalPop + pop.total, 0)
-            .toLocaleString()} (inclusive - No Accounts, Not Active: [dormant, closed, other account problems] )`}</p>
+          <p className='p-screen'>{`Total Cash Allocation (PGK): ${cmcaPaymentsCashAllocation
+            .reduce(
+              (cashAllocation, amt) => cashAllocation + amt.cashAllocation,
+              0
+            )
+            .toLocaleString(undefined, { minimumFractionDigits: 2 })}`}</p>
         </Col>
       </Row>
       <Table
@@ -129,4 +106,4 @@ const CmcaBankTypesStats = ({ cmcaBankTypes, year }) => {
   )
 }
 
-export default CmcaBankTypesStats
+export default CmcaPaymentsCashAllocation

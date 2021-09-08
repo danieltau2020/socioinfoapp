@@ -47,7 +47,7 @@ const CmcaPaymentList = ({
         Header: 'Amount (PGK)',
         accessor: 'totalAmount',
         Cell: ({ cell: { value } }) => {
-          return value.toLocaleString()
+          return value.toLocaleString(undefined, { minimumFractionDigits: 2 })
         }
       },
       { Header: 'Account Name', accessor: 'accountName' },
@@ -146,7 +146,7 @@ const CmcaPaymentList = ({
         <Col sm>
           <p className='p-screen'>{`Total Amount (PGK): ${payments
             .reduce((totalPmt, pmt) => totalPmt + pmt.totalAmount, 0)
-            .toLocaleString()}`}</p>
+            .toLocaleString(undefined, { minimumFractionDigits: 2 })}`}</p>
         </Col>
       </Row>
       <Table

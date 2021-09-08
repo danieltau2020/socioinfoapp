@@ -3,7 +3,7 @@ import CmcaRegionPopulation2017 from '../models/cmcaRegionPopulation2017Model.js
 import CmcaRegionPopulation2021 from '../models/cmcaRegionPopulation2021Model.js'
 
 // @desc    Fetch cmca region population 2017 stats
-// @route   GET /api/statistics/cmca/:year
+// @route   GET /api/statistics/cmca/year
 // @access  Private
 const getCmcaRegionPopulation2017 = asynchandler(async (req, res) => {
   const cmcaRegionPopulation2017 = await CmcaRegionPopulation2017.find({})

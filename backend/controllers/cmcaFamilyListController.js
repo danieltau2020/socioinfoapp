@@ -3,6 +3,7 @@ import CmcaPerson2017 from '../models/cmcaPerson2017Model.js'
 import CmcaPerson2021 from '../models/cmcaPerson2021Model.js'
 import CmcaBankAccount2017 from '../models/cmcaBankAccount2017Model.js'
 import CmcaBankAccount2021 from '../models/cmcaBankAccount2021Model.js'
+import CmcaPayment2021Model from '../models/cmcaPayment2021Model.js'
 import Region from '../models/regionModel.js'
 import Village from '../models/villageModel.js'
 
@@ -25,6 +26,8 @@ const getCmcaFamilyList2017 = asynchandler(async (req, res) => {
     'villageName'
   )
 
+  const pmtBatch = {}
+
   const familyList = await CmcaPerson2017.find({
     villageCode,
     dwelling,
@@ -42,7 +45,9 @@ const getCmcaFamilyList2017 = asynchandler(async (req, res) => {
     throw new Error('Error occured. Please try again.')
   }
 
-  res.status(200).json({ regionName, villageName, familyAccount, familyList })
+  res
+    .status(200)
+    .json({ regionName, villageName, pmtBatch, familyAccount, familyList })
 })
 
 // @desc    Fetch cmca family list 2021 dataset
@@ -64,6 +69,12 @@ const getCmcaFamilyList2021 = asynchandler(async (req, res) => {
     'villageName'
   )
 
+  const pmtBatch = await CmcaPayment2021Model.findOne({
+    villageCode,
+    dwelling,
+    household
+  }).select('pmtBatch')
+
   const familyList = await CmcaPerson2021.find({
     villageCode,
     dwelling,
@@ -76,12 +87,20 @@ const getCmcaFamilyList2021 = asynchandler(async (req, res) => {
     household
   }).select(['accountName', 'accountNumber', 'bank', 'accountStatus'])
 
-  if (!regionName || !villageName || !familyList || !familyAccount) {
+  if (
+    !regionName ||
+    !villageName ||
+    !pmtBatch ||
+    !familyList ||
+    !familyAccount
+  ) {
     res.status(400)
     throw new Error('Error occured. Please try again.')
   }
 
-  res.status(200).json({ regionName, villageName, familyAccount, familyList })
+  res
+    .status(200)
+    .json({ regionName, villageName, pmtBatch, familyAccount, familyList })
 })
 
 export { getCmcaFamilyList2017, getCmcaFamilyList2021 }

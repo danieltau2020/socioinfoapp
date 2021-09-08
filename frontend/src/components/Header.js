@@ -196,7 +196,17 @@ const Header = () => {
                     <Container className='dropdownNav'>
                       <Row>
                         <Col sm='12' md='12' className='text-left'>
-                          <Dropdown.Header>CMCA 2021</Dropdown.Header>
+                          <Dropdown.Header>
+                            CMCA 2021 Cash Allocations
+                          </Dropdown.Header>
+                          <LinkContainer to={`/cashallocation/cmca/${'2021'}`}>
+                            <NavDropdown.Item>
+                              Cash Allocations Per Region
+                            </NavDropdown.Item>
+                          </LinkContainer>
+                          <Dropdown.Header>
+                            CMCA 2021 Payment Batches
+                          </Dropdown.Header>
                           <LinkContainer to={`/payments/cmca/${'2021'}/${'1'}`}>
                             <NavDropdown.Item>Batch 1</NavDropdown.Item>
                           </LinkContainer>

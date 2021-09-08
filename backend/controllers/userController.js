@@ -63,8 +63,6 @@ const loginUser = asyncHandler(async (req, res) => {
       role: user.role,
       token: generateToken(user)
     })
-    // Send cookie with token in it
-    // createCookie(user, 200, res)
   } else {
     res.status(401)
     throw new Error('Invalid username or password')

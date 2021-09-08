@@ -57,7 +57,7 @@ app.use(
       'script-src': ["'self'"],
       'style-src': ["'self'", 'https://cdnjs.cloudflare.com'],
       'font-src': ["'self'", 'https://cdnjs.cloudflare.com'],
-      'img-src': ["'self'", 'http://www.w3.org'],
+      'img-src': ["'self'", 'https://www.w3.org/2000/svg'],
       baseUri: ["'self'"]
     }
   })

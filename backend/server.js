@@ -47,8 +47,19 @@ app.use(mongoSantize())
 
 // Set security headers
 app.use(
-  helmet({
-    contentSecurityPolicy: false
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      'default-src': ["'self'"],
+      'connect-src': ["'self'"],
+      'frame-src': ["'self'"],
+      'child-src': ["'self'"],
+      'script-src': ["'self'"],
+      'style-src': ["'self'", 'https://cdnjs.cloudflare.com'],
+      'font-src': ["'self'", 'https://cdnjs.cloudflare.com'],
+      'img-src': ["'self'"],
+      'base-Uri': ["'self'"]
+    }
   })
 )
 

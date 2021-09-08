@@ -1,4 +1,3 @@
-import { parse } from 'dotenv'
 import React, { useMemo } from 'react'
 import { Row, Col, Table } from 'react-bootstrap'
 import { useTable } from 'react-table'

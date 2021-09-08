@@ -25,6 +25,11 @@
   color: var(--black-color);
 }
 
+.app-styleguide select:focus {
+  border: 0.11em solid #ced4da;
+  outline: 0 none;
+  box-shadow: none;
+}
 .app-styleguide a {
   font-size: 1rem;
   color: var(--primary-color);
@@ -38,16 +43,11 @@
 .app-styleguide input {
   font-size: 1rem;
   color: var(--black-color);
-  /* padding: 0.25em; */
-  /* border: 0.125em solid var(--primary-border-color);
-  background-image: linear-gradient(
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0.8)
-  );
-  background-color: var(--primary-border-color); */
-  /* border: none; */
 }
 
 .app-styleguide input:focus {
+  border: 0.11em solid #ced4da;
+  outline: 0 none;
+  box-shadow: none;
   background-color: white;
 }

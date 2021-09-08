@@ -8,14 +8,26 @@ import { setAlert } from './alertActions'
 
 export const getMvBankAccounts =
   (villageCode = '', year) =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
     try {
       dispatch({
         type: MV_BANK_ACCOUNT_LIST_REQUEST
       })
 
+      const {
+        userLogin: { userInfo }
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+        }
+      }
+
       const { data } = await axios.get(
-        `/api/bankaccount/mv?villageCode=${villageCode}&year=${year}`
+        `/api/bankaccount/mv?villageCode=${villageCode}&year=${year}`,
+        config
       )
 
       dispatch({

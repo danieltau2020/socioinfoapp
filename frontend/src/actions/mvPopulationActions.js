@@ -9,13 +9,27 @@ import {
 } from '../constants/mvPopulationConstants'
 import { setAlert } from './alertActions'
 
-export const getMvPopulation2020 = () => async (dispatch) => {
+export const getMvPopulation2020 = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: MV_POPULATION_2020_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/population/mv/2020')
+    const {
+      userLogin: { userInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.get(
+      '/api/statistics/population/mv/2020',
+      config
+    )
 
     dispatch({
       type: MV_POPULATION_2020_LIST_SUCCESS,
@@ -36,13 +50,27 @@ export const getMvPopulation2020 = () => async (dispatch) => {
   }
 }
 
-export const getMvPopulation2021 = () => async (dispatch) => {
+export const getMvPopulation2021 = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: MV_POPULATION_2021_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/population/mv/2021')
+    const {
+      userLogin: { userInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.get(
+      '/api/statistics/population/mv/2021',
+      config
+    )
 
     dispatch({
       type: MV_POPULATION_2021_LIST_SUCCESS,

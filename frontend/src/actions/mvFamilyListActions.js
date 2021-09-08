@@ -7,13 +7,26 @@ import {
 import { setAlert } from './alertActions.js'
 
 export const getMvFamilyList =
-  (year, regCode, villCode, dwelling, household) => async (dispatch) => {
+  (year, regCode, villCode, dwelling, household) =>
+  async (dispatch, getState) => {
     try {
       dispatch({
         type: MV_FAMILY_LIST_REQUEST
       })
+      const {
+        userLogin: { userInfo }
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+        }
+      }
+
       const { data } = await axios.get(
-        `/api/familylist/mv/${year}?regCode=${regCode}&&villCode=${villCode}&&dwelling=${dwelling}&&household=${household}`
+        `/api/familylist/mv/${year}?regCode=${regCode}&&villCode=${villCode}&&dwelling=${dwelling}&&household=${household}`,
+        config
       )
 
       dispatch({

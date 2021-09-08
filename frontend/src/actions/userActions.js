@@ -50,8 +50,6 @@ export const login = (userName, password) => async (dispatch) => {
 }
 
 export const logout = () => async (dispatch) => {
-  await axios.get('/api/user/logout')
-
   sessionStorage.removeItem('userInfo')
 
   dispatch({

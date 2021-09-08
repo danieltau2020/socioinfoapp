@@ -8,14 +8,26 @@ import { setAlert } from './alertActions'
 
 export const getAllMvPersons =
   (villageCode = '', year) =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
     try {
       dispatch({
         type: MV_PERSON_LIST_REQUEST
       })
 
+      const {
+        userLogin: { userInfo }
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+        }
+      }
+
       const { data } = await axios.get(
-        `/api/person/mv?villageCode=${villageCode}&year=${year}`
+        `/api/person/mv?villageCode=${villageCode}&year=${year}`,
+        config
       )
 
       dispatch({

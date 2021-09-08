@@ -6,12 +6,24 @@ import {
 } from '../constants/cmcaKeyStatsConstants.js'
 import { setAlert } from './alertActions.js'
 
-export const getCmcaKeyStats = () => async (dispatch) => {
+export const getCmcaKeyStats = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: CMCA_KEY_STATS_REQUEST
     })
-    const { data } = await axios.get('/api/cmca/keystats')
+
+    const {
+      userLogin: { userInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.get('/api/cmca/keystats', config)
 
     dispatch({
       type: CMCA_KEY_STATS_SUCCESS,

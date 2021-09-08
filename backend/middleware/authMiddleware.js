@@ -3,33 +3,31 @@ import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
 
 const protect = asyncHandler(async (req, res, next) => {
+  // Get token from header
   let token
 
-  if (!req.cookies) {
-    res.clearCookie('token')
-    res.status(401)
-    throw new Error('Access denied')
-  }
+  // Check if no token
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
+    // Verify token
+    try {
+      token = req.headers.authorization.split(' ')[1]
 
-  if (!req.cookies.token)
-    if (req.cookies.token) {
-      try {
-        token = req.cookies.token
+      const decoded = jwt.verify(token, process.env.JWT_SECRET)
 
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+      req.user = await User.findById(decoded._id).select('-password')
 
-        req.user = await User.findById(decoded._id).select('-password')
-      } catch (error) {
-        res.clearCookie('token')
-        res.status(401)
-        throw new Error('Access denied')
-      }
-    } else {
-      res.clearCookie('token')
+      next()
+    } catch (error) {
       res.status(401)
       throw new Error('Access denied')
     }
-  next()
+  } else {
+    res.status(401)
+    throw new Error('Access denied')
+  }
 })
 
 const admin = asyncHandler((req, res, next) => {

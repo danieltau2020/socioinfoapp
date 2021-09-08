@@ -8,13 +8,26 @@ import { setAlert } from './alertActions.js'
 
 export const getCmcaPayments =
   (year, villageCode = '', pmtBatch) =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
     try {
       dispatch({
         type: CMCA_PAYMENTS_REQUEST
       })
+
+      const {
+        userLogin: { userInfo }
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+        }
+      }
+
       const { data } = await axios.get(
-        `/api/payments/cmca/${year}?pmtBatch=${pmtBatch}&&villCode=${villageCode}`
+        `/api/payments/cmca/${year}?pmtBatch=${pmtBatch}&&villCode=${villageCode}`,
+        config
       )
 
       dispatch({

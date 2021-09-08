@@ -9,13 +9,27 @@ import {
 } from '../constants/cmcaBankTypesConstants'
 import { setAlert } from './alertActions'
 
-export const getCmcaBankTypes2017 = () => async (dispatch) => {
+export const getCmcaBankTypes2017 = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: CMCA_BANK_TYPES_2017_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/bankaccounts/cmca/2017')
+    const {
+      userLogin: { userInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.get(
+      '/api/statistics/bankaccounts/cmca/2017',
+      config
+    )
 
     dispatch({
       type: CMCA_BANK_TYPES_2017_LIST_SUCCESS,
@@ -36,13 +50,27 @@ export const getCmcaBankTypes2017 = () => async (dispatch) => {
   }
 }
 
-export const getCmcaBankTypes2021 = () => async (dispatch) => {
+export const getCmcaBankTypes2021 = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: CMCA_BANK_TYPES_2021_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/bankaccounts/cmca/2021')
+    const {
+      userLogin: { userInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.get(
+      '/api/statistics/bankaccounts/cmca/2021',
+      config
+    )
 
     dispatch({
       type: CMCA_BANK_TYPES_2021_LIST_SUCCESS,

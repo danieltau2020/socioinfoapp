@@ -9,13 +9,27 @@ import {
 } from '../constants/mvBankTypesConstants'
 import { setAlert } from './alertActions'
 
-export const getMvBankTypes2020 = () => async (dispatch) => {
+export const getMvBankTypes2020 = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: MV_BANK_TYPES_2020_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/bankaccounts/mv/2020')
+    const {
+      userLogin: { userInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.get(
+      '/api/statistics/bankaccounts/mv/2020',
+      config
+    )
 
     dispatch({
       type: MV_BANK_TYPES_2020_LIST_SUCCESS,
@@ -36,13 +50,27 @@ export const getMvBankTypes2020 = () => async (dispatch) => {
   }
 }
 
-export const getMvBankTypes2021 = () => async (dispatch) => {
+export const getMvBankTypes2021 = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: MV_BANK_TYPES_2021_LIST_REQUEST
     })
 
-    const { data } = await axios.get('/api/statistics/bankaccounts/mv/2021')
+    const {
+      userLogin: { userInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.get(
+      '/api/statistics/bankaccounts/mv/2021',
+      config
+    )
 
     dispatch({
       type: MV_BANK_TYPES_2021_LIST_SUCCESS,

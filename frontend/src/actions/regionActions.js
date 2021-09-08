@@ -8,13 +8,27 @@ import { setAlert } from './alertActions'
 
 export const getRegionVillage =
   (regionCode = '') =>
-  async (dispatch) => {
+  async (dispatch, getState) => {
     try {
       dispatch({
         type: REGION_LIST_REQUEST
       })
 
-      const { data } = await axios.get(`/api/region?regionCode=${regionCode}`)
+      const {
+        userLogin: { userInfo }
+      } = getState()
+
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userInfo.token}`
+        }
+      }
+
+      const { data } = await axios.get(
+        `/api/region?regionCode=${regionCode}`,
+        config
+      )
 
       dispatch({
         type: REGION_LIST_SUCCESS,

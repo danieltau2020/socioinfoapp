@@ -1,5 +1,5 @@
 {
-  "name": "sinfo",
+  "name": "socioinfo",
   "version": "1.0.0",
   "description": "Socioeconomic information for the communities impacted by Ok Tedi Mining Limited",
   "main": "server.js",

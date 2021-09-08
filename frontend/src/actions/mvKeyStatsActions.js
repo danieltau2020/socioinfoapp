@@ -6,13 +6,24 @@ import {
 } from '../constants/mvKeyStatsConstants.js'
 import { setAlert } from './alertActions.js'
 
-export const getMvKeyStats = () => async (dispatch) => {
+export const getMvKeyStats = () => async (dispatch, getState) => {
   try {
     dispatch({
       type: MV_KEY_STATS_REQUEST
     })
 
-    const { data } = await axios.get('/api/mv/keystats')
+    const {
+      userLogin: { userInfo }
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`
+      }
+    }
+
+    const { data } = await axios.get('/api/mv/keystats', config)
 
     dispatch({
       type: MV_KEY_STATS_SUCCESS,

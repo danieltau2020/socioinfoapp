@@ -32,11 +32,11 @@ const Header = () => {
         <>
           {userInfo ? (
             <LinkContainer to='/home'>
-              <Navbar.Brand>SInfo</Navbar.Brand>
+              <Navbar.Brand>SocioInfo</Navbar.Brand>
             </LinkContainer>
           ) : (
             <LinkContainer to='/'>
-              <Navbar.Brand>SInfo</Navbar.Brand>
+              <Navbar.Brand>SocioInfo</Navbar.Brand>
             </LinkContainer>
           )}
           <Navbar.Toggle aria-controls='responsive-navbar-nav' />
@@ -226,7 +226,7 @@ const Header = () => {
                     </Nav.Link>
                   </LinkContainer>
                   <Navbar.Text className='mb-0'>
-                    Welcome! {userInfo.name}
+                    Hi! {userInfo.name}
                   </Navbar.Text>
                 </>
               ) : (

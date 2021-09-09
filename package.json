@@ -4,6 +4,10 @@
   "description": "Socioeconomic information for the communities impacted by Ok Tedi Mining Limited",
   "main": "server.js",
   "type": "module",
+  "engines": {
+    "node": "16.x",
+    "npm": "7.21.1"
+  },
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",

@@ -43,12 +43,14 @@ const MvPopulationScreen = () => {
   return (
     <Container>
       <Row>
-        <Col sm>
-          <h4 className='h4-screen'>
-            <i className='fas fa-chart-line'></i> Mine Villages Population
-            Summary
-          </h4>
-        </Col>
+        {!loadingMvPopulation2020 || !loadingMvPopulation2021 ? (
+          <Col sm>
+            <h4 className='h4-screen'>
+              <i className='fas fa-chart-line'></i> Mine Villages Population
+              Summary
+            </h4>
+          </Col>
+        ) : null}
       </Row>
 
       {loadingMvPopulation2020 ? (

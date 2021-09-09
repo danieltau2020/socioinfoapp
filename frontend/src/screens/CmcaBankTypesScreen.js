@@ -43,11 +43,13 @@ const CmcaBankTypesScreen = () => {
   return (
     <Container>
       <Row>
-        <Col sm>
-          <h4 className='h4-screen'>
-            <i className='fas fa-chart-line'></i> CMCA Bank Accounts Summary
-          </h4>
-        </Col>
+        {!loadingCmcaBankTypes2017 || !loadingCmcaBankTypes2021 ? (
+          <Col sm>
+            <h4 className='h4-screen'>
+              <i className='fas fa-chart-line'></i> CMCA Bank Accounts Summary
+            </h4>
+          </Col>
+        ) : null}
       </Row>
       {loadingCmcaBankTypes2017 ? (
         <Loader />

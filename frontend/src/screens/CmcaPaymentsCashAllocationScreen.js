@@ -29,12 +29,14 @@ const CmcaPaymentsCashAllocationScreen = ({ match }) => {
   return (
     <Container>
       <Row>
-        <Col sm>
-          <h4 className='h4-screen'>
-            <i className='fas fa-money-check-alt'></i> CMCA Payments Cash
-            Allocation Summary
-          </h4>
-        </Col>
+        {!loadingCmcaPaymentsCashAllocation2021 ? (
+          <Col sm>
+            <h4 className='h4-screen'>
+              <i className='fas fa-money-check-alt'></i> CMCA Payments Cash
+              Allocation Summary
+            </h4>
+          </Col>
+        ) : null}
       </Row>
       {loadingCmcaPaymentsCashAllocation2021 ? (
         <Loader />

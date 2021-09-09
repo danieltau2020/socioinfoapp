@@ -39,12 +39,14 @@ const MvBankTypesScreen = () => {
   return (
     <Container>
       <Row>
-        <Col sm>
-          <h4 className='h4-screen'>
-            <i className='fas fa-chart-line'></i> Mine Villages Bank Accounts
-            Summary
-          </h4>
-        </Col>
+        {!loadingMvBankTypes2020 || !loadingMvBankTypes2021 ? (
+          <Col sm>
+            <h4 className='h4-screen'>
+              <i className='fas fa-chart-line'></i> Mine Villages Bank Accounts
+              Summary
+            </h4>
+          </Col>
+        ) : null}
       </Row>
       {loadingMvBankTypes2020 ? (
         <Loader />

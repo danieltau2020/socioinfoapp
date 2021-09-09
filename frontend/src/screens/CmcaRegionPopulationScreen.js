@@ -43,12 +43,15 @@ const CmcaRegionPopulationScreen = () => {
   return (
     <Container>
       <Row>
-        <Col sm>
-          <h4 className='h4-screen'>
-            <i className='fas fa-chart-line'></i> CMCA Regions Population
-            Summary
-          </h4>
-        </Col>
+        {!loadingCmcaRegionPopulation2017 ||
+        !loadingCmcaRegionPopulation2021 ? (
+          <Col sm>
+            <h4 className='h4-screen'>
+              <i className='fas fa-chart-line'></i> CMCA Regions Population
+              Summary
+            </h4>
+          </Col>
+        ) : null}
       </Row>
       {loadingCmcaRegionPopulation2017 ? (
         <Loader />

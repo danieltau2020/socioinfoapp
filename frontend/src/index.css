@@ -74,7 +74,19 @@
   width: 100px;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
+  .app-styleguide .otml-logo {
+    position: relative;
+    background: url('./img/otml.png') no-repeat center center/cover;
+    height: 55px;
+    width: 155px;
+    object-fit: contain;
+  }
+
+  .app-styleguide .cr-title {
+    font-size: 14px;
+  }
+
   .app-styleguide .card {
     font-size: 12px !important;
     width: 7rem !important;
@@ -160,7 +172,6 @@
   .otml-logo {
     position: relative;
     background: url('./img/otml.png') no-repeat center center/cover;
-    z-index: 50;
     height: 80px;
     width: 222px;
     object-fit: contain;
@@ -224,15 +235,3 @@
     flex: -1 0 30%;
   }
 }
-
-/* @media only screen and (max-width: 1199px) {
-  .app-styleguide .navbar-light .navbar-text {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 1000px) {
-  .app-styleguide .navbar-light .navbar-text {
-    display: unset;
-  }
-} */

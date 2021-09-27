@@ -13,6 +13,7 @@ import MvPopulationScreen from '../screens/MvPopulationScreen'
 import CmcaBankTypesScreen from '../screens/CmcaBankTypesScreen'
 import MvBankTypesScreen from '../screens/MvBankTypesScreen'
 import CmcaPaymentsListScreen from '../screens/CmcaPaymentsListScreen'
+import SmlLeasePaymentsListScreen from '../screens/SmlLeasePaymentsListScreen'
 import CmcaFamilyListScreen from '../screens/CmcaFamilyListScreen'
 import MvFamilyListScreen from '../screens/MvFamilyListScreen'
 import CmcaPaymentsCashAllocationScreen from '../screens/CmcaPaymentsCashAllocationScreen'
@@ -71,6 +72,11 @@ const Routes = () => {
             exact
             path='/payments/cmca/:year/:pmtBatch'
             component={CmcaPaymentsListScreen}
+          />
+          <PrivateRoute
+            exact
+            path='/payments/sml/:year/:pmtBatch'
+            component={SmlLeasePaymentsListScreen}
           />
           <PrivateRoute
             exact

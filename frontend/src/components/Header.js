@@ -204,10 +204,14 @@ const Header = () => {
                               Cash Allocations Per Region
                             </NavDropdown.Item>
                           </LinkContainer>
-                          <Dropdown.Header>
-                            CMCA 2021 Payment Batches
-                          </Dropdown.Header>
+                          <Dropdown.Header>CMCA 2021 Payments</Dropdown.Header>
                           <LinkContainer to={`/payments/cmca/${'2021'}/${'1'}`}>
+                            <NavDropdown.Item>Batch 1</NavDropdown.Item>
+                          </LinkContainer>
+                          <Dropdown.Header>
+                            SML Lease 2021 Payments
+                          </Dropdown.Header>
+                          <LinkContainer to={`/payments/sml/${'2021'}/${'1'}`}>
                             <NavDropdown.Item>Batch 1</NavDropdown.Item>
                           </LinkContainer>
                         </Col>

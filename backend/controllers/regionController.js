@@ -33,4 +33,31 @@ const getRegionVillage = asynchandler(async (req, res) => {
   }
 })
 
-export { getRegionVillage }
+// @desc    Fetch sml villages
+// @route   GET /api/region/sml
+// @access  Private
+const getSmlVillages = asynchandler(async (req, res) => {
+  const villages = await Village.find({
+    $or: [
+      { villageCode: '101' },
+      { villageCode: '102' },
+      { villageCode: '103' },
+      { villageCode: '104' },
+      { villageCode: '208' },
+      { villageCode: '210' }
+    ]
+  })
+
+  if (!villages) {
+    res.status(400)
+    throw new Error('Error occured. Please try again.')
+  }
+
+  res
+    .status(200)
+    .json([
+      { _id: '10', regionCode: '10', regionName: 'SML Villages', villages }
+    ])
+})
+
+export { getRegionVillage, getSmlVillages }

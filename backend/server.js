@@ -29,6 +29,7 @@ import cmcaPaymentsRoutes from './routes/cmcaPaymentsRoutes.js'
 import cmcaFamilyListRoutes from './routes/cmcaFamilyListRoutes.js'
 import mvFamilyListRoutes from './routes/mvFamilyListRoutes.js'
 import cmcaPaymentsCashAllocationRoutes from './routes/cmcaPaymentsCashAllocationRoutes.js'
+import smlLeasePaymentsRoutes from './routes/smlLeasePaymentsRoutes.js'
 
 dotenv.config()
 
@@ -95,6 +96,7 @@ app.use('/api/statistics/population/mv', mvPopulationRoutes)
 app.use('/api/statistics/bankaccounts/cmca', cmcaBankTypesRoutes)
 app.use('/api/statistics/bankaccounts/mv', mvBankTypesRoutes)
 app.use('/api/payments/cmca', cmcaPaymentsRoutes)
+app.use('/api/payments/sml', smlLeasePaymentsRoutes)
 app.use('/api/familylist/cmca', cmcaFamilyListRoutes)
 app.use('/api/familylist/mv', mvFamilyListRoutes)
 app.use('/api/cashallocation/cmca', cmcaPaymentsCashAllocationRoutes)
